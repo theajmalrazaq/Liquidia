@@ -11,17 +11,39 @@ My web application is perfect for anyone who wants to stay on top of their liqui
 
 ## Features
 
--Easily add your daily liquid purchases  return
--Automatic calculation of total quantity and price at the end of the month  return
--Ability to input price per liter to calculate total cost return
--Perfect for tracking water, milk, or any other type of liquid purchase in liters  return
--Designed to save you time and money return
--Custom Date Picker   return
--Responsive  return
--Nice UI  return
--Work on Browser Local Storage  return
--No Library Used    return
--Count Button Shows automatically when Month Complete   return
+-Easily add your daily liquid purchases
+
+
+-Automatic calculation of total quantity and price at the end of the month
+
+
+-Ability to input price per liter to calculate total cost
+
+
+-Perfect for tracking water, milk, or any other type of liquid purchase in liters
+
+
+-Designed to save you time and money
+
+
+-Custom Date Picker  
+
+
+-Responsive 
+
+
+-Nice UI 
+
+
+-Work on Browser Local Storage
+
+
+-No Library Used    
+
+
+-Count Button Shows automatically when Month Complete 
+
+
 -Option to count before completing Month 
 
 ## Getting Started
