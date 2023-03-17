@@ -3,7 +3,7 @@
 
 # Monthly Liquid Purchase Calculator.
 ## About
-Welcome to my new web application designed to make tracking your daily liquid purchases a breeze. With our app, you can easily keep track of the quantity of liquids you buy each day, and at the end of the month, our calculator will automatically calculate your total quantity and price.
+Welcome to my new web application designed to make tracking your daily liquid purchases a breeze. With my web app, you can easily keep track of the quantity of liquids you buy each day, and at the end of the month, our calculator will automatically calculate your total quantity and price.
 
 Whether you're buying water, milk, or any other type of liquid in liters, our app makes it easy to add your daily purchases. Simply input the quantity of liquid you purchase each day, and my app will take care of the rest. At the end of the month, all you need to do is input the price per liter, and my app will calculate your total quantity and price.
 
