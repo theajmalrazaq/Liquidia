@@ -112,7 +112,7 @@ function donebtn() {
 // function to perform and shows count button before completing month 
 
 function countbeforemonth() {
-  if (confirm("Do you really want to count before month?")) {
+  if (confirm("Do you really want to count before completing month?")) {
 
     document.getElementById("countbtn").style.display = "";
     document.getElementById("price-input").style.display = "";
