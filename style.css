@@ -108,7 +108,7 @@ body {
   color: #f2f2f2;
   background: #111212;
   overflow: hidden;
-  margin: 0px 570px;
+  margin: 30px 570px;
 }
 @media (max-width: 991px) {
   body {
@@ -120,7 +120,6 @@ body {
 }
 
 header {
-  margin-top: 50px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
