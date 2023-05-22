@@ -120,6 +120,7 @@ body {
 }
 
 header {
+  margin-top: 50px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
