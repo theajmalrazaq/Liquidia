@@ -9,13 +9,9 @@
 }
 
 @font-face {
-  font-family: "Google Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Google Sans Regular"), local(GoogleSans-Regular),
-    url(//fonts.gstatic.com/s/googlesans/v5/4UaGrENHsxJlGDuGo1OIlL3Nwp5MKg.woff2)
-      format("woff2");
-  unicode-range: U+0370-03FF;
+  font-family: Lemon Milk;
+
+  src: url(LEMONMILK-Medium.woff2) format("woff2");
 }
 
 @font-face {
@@ -102,7 +98,7 @@ ol::-webkit-scrollbar-thumb:hover {
 
 body {
   color: #f2f2f2;
-  background: #111212;
+  background: #111111;
   overflow: hidden;
   margin: 30px 570px;
 }
@@ -131,7 +127,7 @@ header {
   top: 0px;
   left: 0px;
   width: 100%;
-  background: #111212;
+  background: #111111;
   z-index: 5;
 }
 
@@ -155,11 +151,20 @@ svg {
 path {
   background: none;
 }
-
+#nothing {
+  text-align: center;
+  color: #747474;
+  font-size: 34px;
+}
+.nothing__small {
+  font-size: 17px;
+  font-family: "Google Sans", sans-serif;
+  font-weight: 400;
+}
 input {
   color: #f2f2f2;
   font-family: "Google Sans", sans-serif;
-  padding: 12px;
+  padding: 11px;
   background: #212121;
   border-radius: 25px;
   height: auto;
@@ -202,33 +207,45 @@ th {
 }
 
 ol {
-  height: 54vh;
+  height: 47vh;
   padding-left: 0px;
   overflow-y: scroll;
   font-family: "Google Sans", sans-serif;
 }
 
 .logo {
-  width: 400px;
-  height: auto;
+  height: 50px;
+}
+.name {
+  font-family: Lemon Milk;
+  font-size: 26px;
 }
 
 small {
-  background-color: #212121;
-  padding: 10px;
+  background-color: #161616;
+  padding: 10px 20px;
   color: #dedbd4;
-  border-radius: 8px;
+  border-radius: 100px;
   font-family: "Google Sans", sans-serif;
+}
+input::placeholder {
+  color: #ffffff;
+}
+input:invalid {
+  color: red;
 }
 
 .measure {
   color: #ffffff;
   font-weight: 500;
   font-size: 13px;
-  text-align: center;
-  position: relative;
-  left: -10px;
+  margin: 0px 20px;
   font-family: "Google Sans", sans-serif;
+}
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .button-wrap {
@@ -236,7 +253,7 @@ small {
 }
 
 .button-long-list {
-  background: #161616;
+  background: #212121;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -272,7 +289,7 @@ small {
 }
 
 .icon-bg {
-  background: #212121;
+  background: #161616;
   width: 50px;
   height: 50px;
   border-radius: 12px;
@@ -298,8 +315,16 @@ small {
 
 .countbtns {
   display: flex;
+  gap: 7px;
+  padding: 10px;
   align-items: center;
-  justify-content: center;
+}
+h3 {
+  padding: 0px 10px;
+  font-family: "Google Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: capitalize;
 }
 
 #custom-date-popup {
@@ -348,13 +373,33 @@ small {
   /* Firefox */
 }
 
-.button {
+.button:nth-child(2) {
   display: inline;
-  margin: 20px;
   font-family: "Google Sans", sans-serif;
   background: white;
   border: none;
-  padding: 8px 16px;
+  height: 35px;
+  width: 100px;
+  border-radius: 30px;
+  color: #212121;
+}
+.button:nth-child(1) {
+  display: inline;
+  font-family: "Google Sans", sans-serif;
+  background: white;
+  border: none;
+  height: 35px;
+  width: 80px;
+  border-radius: 30px;
+  color: #212121;
+}
+.button:nth-child(3) {
+  display: inline;
+  font-family: "Google Sans", sans-serif;
+  background: white;
+  border: none;
+  height: 35px;
+  width: 80px;
   border-radius: 30px;
   color: #212121;
 }
