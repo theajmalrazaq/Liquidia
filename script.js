@@ -5,16 +5,15 @@ function clearstorage() {
     window.location.reload();
   }
 }
-
+var slicedvalue;
 // items array that contains all quantity items
 // JSON.parse is used to parse the stringified items from localStorage
 // if localStorage is empty, make the items variable an empty array
 let items = JSON.parse(localStorage.getItem("quantity-list")) || [];
-console.log(items);
+
 // svg icons veriables to import icon from html
 
 let svg1 = document.getElementById("icon1").innerHTML;
-let svg2 = document.getElementById("icon2").innerHTML;
 
 // function to get days in month for showing count button when month complete
 
@@ -26,8 +25,52 @@ const currentyear = date.getFullYear();
 const currentmonth = date.getMonth() + 1;
 const daysincurrentmonth = getdaysinmonth(currentyear, currentmonth);
 const dayslength = daysincurrentmonth;
-
+document.getElementById("clear").textContent = date.getDate();
 // mix function run when page open to reset values and perform other functions
+document
+  .getElementById("custom-date-input")
+  .setAttribute("min", currentyear + "-" + "0" + currentmonth + "-" + "01");
+document
+  .getElementById("custom-date-input")
+  .setAttribute(
+    "max",
+    currentyear + "-" + "0" + currentmonth + "-" + dayslength
+  );
+
+// custom date slection
+function showcustomdatepopup() {
+  if (
+    document.getElementById("custom-date-input").value === "" ||
+    document.getElementById("custom-date-popup").style.display === ""
+  ) {
+    document.getElementById("custom-date-popup").style.display = "none";
+  }
+  if (document.getElementById("custom-date-popup").style.display === "none") {
+    document.getElementById("custom-date-popup").style.display = "";
+  } else {
+    document.getElementById("custom-date-input").value = "";
+    document.getElementById("custom-date-popup").style.display = "none";
+  }
+}
+
+// cancel button on cudtom date picker pop up
+
+function cancelbtn() {
+  document.getElementById("custom-date-input").value = "";
+  document.getElementById("custom-date-popup").style.display = "none";
+}
+// done button on cudtom date picker pop up
+function donebtn() {
+  if (document.getElementById("custom-date-input").value === "") {
+    alert("Put date");
+  }
+  if (document.getElementById("custom-date-input").value != "") {
+    document.getElementById("custom-date-popup").style.display = "none";
+    let customdatevalue = document.getElementById("custom-date-input").value;
+    slicedvalue = customdatevalue.slice(8, 10);
+    document.getElementById("clear").textContent = slicedvalue;
+  }
+}
 
 function mixfun() {
   let comp = items.length <= 0;
@@ -63,38 +106,8 @@ function mixfun() {
     document.getElementById("nothing").style.display = "";
     document.getElementById("clearstorage").style.display = "none";
   }
-}
-
-// custom date slection
-
-function showcustomdatepopup() {
-  if (
-    document.getElementById("custom-date-input").value === "" ||
-    document.getElementById("custom-date-popup").style.display === ""
-  ) {
-    document.getElementById("custom-date-popup").style.display = "none";
-  }
-  if (document.getElementById("custom-date-popup").style.display === "none") {
-    document.getElementById("custom-date-popup").style.display = "";
-  } else {
-    document.getElementById("custom-date-input").value = "";
-    document.getElementById("custom-date-popup").style.display = "none";
-  }
-}
-
-// cancel button on cudtom date picker pop up
-
-function cancelbtn() {
-  document.getElementById("custom-date-input").value = "";
-  document.getElementById("custom-date-popup").style.display = "none";
-}
-// done button on cudtom date picker pop up
-function donebtn() {
-  if (document.getElementById("custom-date-input").value === "") {
-    alert("Put date");
-  }
-  if (document.getElementById("custom-date-input").value != "") {
-    document.getElementById("custom-date-popup").style.display = "none";
+  if (slicedvalue !== date.getDate()) {
+    document.getElementById("clear").textContent = date.getDate();
   }
 }
 

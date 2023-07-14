@@ -10,74 +10,16 @@
 
 @font-face {
   font-family: Lemon Milk;
-
   src: url(LEMONMILK-Medium.woff2) format("woff2");
 }
 
 @font-face {
-  font-family: "Google Sans";
-  font-style: normal;
-  font-weight: 400;
+  font-family: "Google Sans Bold";
+
+  font-weight: 700;
   src: local("Google Sans Regular"), local(GoogleSans-Regular),
-    url(//fonts.gstatic.com/s/googlesans/v5/4UaGrENHsxJlGDuGo1OIlL3Awp5MKg.woff2)
+    url(https://fonts.gstatic.com/s/googlesans/v58/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjIUvbQui-A3tw.woff2)
       format("woff2");
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Google Sans Regular"), local(GoogleSans-Regular),
-    url(//fonts.gstatic.com/s/googlesans/v5/4UaGrENHsxJlGDuGo1OIlL3Owp4.woff2)
-      format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Google Sans Medium"), local(GoogleSans-Medium),
-    url(//fonts.gstatic.com/s/googlesans/v5/4UabrENHsxJlGDuGo1OIlLU94Yt3CwZ-Pw.woff2)
-      format("woff2");
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Google Sans Medium"), local(GoogleSans-Medium),
-    url(//fonts.gstatic.com/s/googlesans/v5/4UabrENHsxJlGDuGo1OIlLU94YtwCwZ-Pw.woff2)
-      format("woff2");
-  unicode-range: U+0370-03FF;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Google Sans Medium"), local(GoogleSans-Medium),
-    url(//fonts.gstatic.com/s/googlesans/v5/4UabrENHsxJlGDuGo1OIlLU94Yt9CwZ-Pw.woff2)
-      format("woff2");
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: local("Google Sans Medium"), local(GoogleSans-Medium),
-    url(//fonts.gstatic.com/s/googlesans/v5/4UabrENHsxJlGDuGo1OIlLU94YtzCwY.woff2)
-      format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
 }
 
 /* width */
@@ -97,8 +39,8 @@ ol::-webkit-scrollbar-thumb:hover {
 }
 
 body {
-  color: #f2f2f2;
-  background: #111111;
+  color: #161616;
+  background: #ffffff;
   overflow: hidden;
   margin: 30px 570px;
 }
@@ -112,12 +54,8 @@ body {
 }
 
 header {
-  margin-top: 50px;
+  margin: 40px 0px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
 }
 
 .upper {
@@ -127,7 +65,6 @@ header {
   top: 0px;
   left: 0px;
   width: 100%;
-  background: #111111;
   z-index: 5;
 }
 
@@ -153,19 +90,20 @@ path {
 }
 #nothing {
   text-align: center;
-  color: #747474;
+  color: #0172ff;
   font-size: 34px;
 }
 .nothing__small {
   font-size: 17px;
   font-family: "Google Sans", sans-serif;
   font-weight: 400;
+  color: #111;
 }
 input {
-  color: #f2f2f2;
+  color: #161616;
   font-family: "Google Sans", sans-serif;
   padding: 11px;
-  background: #212121;
+  background: #f2f2f2;
   border-radius: 25px;
   height: auto;
   border: none;
@@ -186,7 +124,7 @@ table {
 }
 
 th {
-  background-color: #212121;
+  background-color: #f2f2f2;
   font-family: "Google Sans", sans-serif;
   position: sticky;
   position: -webkit-sticky;
@@ -214,29 +152,33 @@ ol {
 }
 
 .logo {
-  height: 50px;
+  height: 45px;
 }
 .name {
   font-family: Lemon Milk;
-  font-size: 26px;
+  font-size: 22px;
+  color: #161616;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
 small {
-  background-color: #161616;
+  background-color: #c0ddff;
   padding: 10px 20px;
-  color: #dedbd4;
+  color: #111;
   border-radius: 100px;
   font-family: "Google Sans", sans-serif;
 }
 input::placeholder {
-  color: #ffffff;
+  color: #111;
+  text-transform: capitalize;
 }
 input:invalid {
   color: red;
 }
 
 .measure {
-  color: #ffffff;
+  color: #161616;
   font-weight: 500;
   font-size: 13px;
   margin: 0px 20px;
@@ -253,7 +195,7 @@ input:invalid {
 }
 
 .button-long-list {
-  background: #212121;
+  background: #f5f5f5;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -273,7 +215,7 @@ input:invalid {
   justify-content: space-between;
   overflow: hidden;
   align-items: center;
-  background: #212121;
+  background: #f2f2f2;
   width: 100%;
   padding: 10px;
   margin: auto;
@@ -289,18 +231,21 @@ input:invalid {
 }
 
 .icon-bg {
-  background: #161616;
+  background: #c0ddff;
   width: 50px;
   height: 50px;
   border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon-txt {
   margin: 0px;
   background: none;
-  position: relative;
-  top: 26%;
+  color: #111;
   font-weight: bold;
+  font-family: Lemon Milk;
 }
 
 .btn-txt {
@@ -333,16 +278,15 @@ h3 {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
   overflow-y: auto;
-  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
   z-index: 10;
   padding: 30px;
   margin: auto;
-  background: rgba(11 12 12 / 80%);
+  background: #f2f2f2;
   border-radius: 12px;
 }
 
 #reportcard {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
@@ -350,8 +294,8 @@ h3 {
   padding: 40px;
   z-index: 10;
   margin: 5px;
-  width: 80%;
-  background: rgba(11 12 12 / 80%);
+  width: 100%;
+  background: white;
   border-radius: 12px;
 }
 
@@ -373,33 +317,33 @@ h3 {
   /* Firefox */
 }
 
-.button:nth-child(2) {
+.button:nth-child(1) {
   display: inline;
   font-family: "Google Sans", sans-serif;
-  background: white;
+  background: #0172ff;
   border: none;
   height: 35px;
   width: 100px;
   border-radius: 30px;
-  color: #212121;
+  color: white;
 }
-.button:nth-child(1) {
+.button:nth-child(2) {
   display: inline;
   font-family: "Google Sans", sans-serif;
-  background: white;
+  background: #c0ddff;
   border: none;
   height: 35px;
   width: 80px;
   border-radius: 30px;
-  color: #212121;
+  color: black;
 }
 .button:nth-child(3) {
   display: inline;
   font-family: "Google Sans", sans-serif;
-  background: white;
+  background: #0172ff;
   border: none;
   height: 35px;
   width: 80px;
   border-radius: 30px;
-  color: #212121;
+  color: white;
 }
