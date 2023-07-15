@@ -3,7 +3,7 @@
   "short_name": "Aqualator",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#C0DDFF",
+  "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "orientation": "portrait-primary",
   "icons": [
