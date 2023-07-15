@@ -1,4 +1,4 @@
-![Thumbnail](https://i.ibb.co/7KQvCPb/Untitled.png)
+![Thumbnail](https://i.ibb.co/Y0BK2ZY/Untitled.png)
 
 ## About
 
