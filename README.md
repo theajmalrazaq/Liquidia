@@ -1,5 +1,5 @@
 <center>
-  <img src="https://i.ibb.co/mvM3dYD/Untitled.png" height="100px" width="auto"/>
+  <img src="https://i.ibb.co/mvM3dYD/Untitled.png" height="200px" width="auto"/>
 </center>
 
 ## About
