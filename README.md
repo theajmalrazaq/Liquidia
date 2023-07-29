@@ -1,4 +1,6 @@
-![Thumbnail](https://i.ibb.co/mvM3dYD/Untitled.png)
+<p align="center">
+  <img src="https://i.ibb.co/mvM3dYD/Untitled.png" height="200px" width="auto"/>
+</p>
 
 ## About
 
