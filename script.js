@@ -106,9 +106,6 @@ function mixfun() {
     document.getElementById("nothing").style.display = "";
     document.getElementById("clearstorage").style.display = "none";
   }
-  if (slicedvalue !== date.getDate()) {
-    document.getElementById("clear").textContent = date.getDate();
-  }
 }
 
 // function to perform and shows count button before completing month
@@ -150,7 +147,9 @@ function addItem() {
   if (item === "") {
     return alert("Put Quantity");
   }
-
+  if (slicedvalue !== date.getDate()) {
+    document.getElementById("clear").textContent = date.getDate();
+  }
   // if custom date is empty put today date if not than put custom date
   let datevalue = new Date(document.getElementById("custom-date-input").value);
   if (document.getElementById("custom-date-input").value === "") {

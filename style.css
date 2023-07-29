@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: Lemon Milk;
-  src: url(LEMONMILK-Medium.woff2) format("woff2");
+  src: url(assets/fonts/LEMONMILK-Medium.woff2) format("woff2");
 }
 
 @font-face {
@@ -93,7 +93,7 @@ path {
 }
 #nothing {
   text-align: center;
-  color: #0172ff;
+  color: #0038ff;
   font-size: 34px;
 }
 .nothing__small {
@@ -278,18 +278,26 @@ h3 {
 }
 
 #custom-date-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99; /* Make sure it's on top of other elements */
+}
+#popup {
+  /* Style the pop-up */
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  overflow-y: auto;
-  z-index: 10;
-  padding: 30px;
-  margin: auto;
-  background: #f2f2f2;
-  border-radius: 12px;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Make sure it's on top of the overlay */
 }
-
 #reportcard {
   position: relative;
 
@@ -325,7 +333,7 @@ h3 {
 .button:nth-child(1) {
   display: inline;
   font-family: "Google Sans", sans-serif;
-  background: #0172ff;
+  background: #0038ff;
   border: none;
   height: 35px;
   width: 100px;
@@ -345,7 +353,7 @@ h3 {
 .button:nth-child(3) {
   display: inline;
   font-family: "Google Sans", sans-serif;
-  background: #0172ff;
+  background: #0038ff;
   border: none;
   height: 35px;
   width: 80px;

@@ -1,6 +1,6 @@
 {
-  "name": "Aqualator",
-  "short_name": "Aqualator",
+  "name": "Liquidia",
+  "short_name": "Liquidia",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -8,44 +8,52 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "Icons/android-launchericon-72-72.png",
+      "src": "assets/icons/icon-72x72.png",
+      "sizes": "72x72",
       "type": "image/png",
-      "sizes": "72x72"
+      "purpose": "maskable any"
     },
     {
-      "src": "Icons/android-launchericon-96-96.png",
+      "src": "assets/icons/icon-96x96.png",
+      "sizes": "96x96",
       "type": "image/png",
-      "sizes": "96x96"
+      "purpose": "maskable any"
     },
     {
-      "src": "Icons/android-launchericon-144-144.png",
+      "src": "assets/icons/icon-128x128.png",
+      "sizes": "128x128",
       "type": "image/png",
-      "sizes": "128x128"
+      "purpose": "maskable any"
     },
     {
-      "src": "Icons/android-launchericon-144-144.png",
+      "src": "assets/icons/icon-144x144.png",
+      "sizes": "144x144",
       "type": "image/png",
-      "sizes": "144x144"
+      "purpose": "maskable any"
     },
     {
-      "src": "Icons/android-launchericon-192-192.png",
+      "src": "assets/icons/icon-152x152.png",
+      "sizes": "152x152",
       "type": "image/png",
-      "sizes": "152x152"
+      "purpose": "maskable any"
     },
     {
-      "src": "Icons/android-launchericon-192-192.png",
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "sizes": "192x192"
+      "purpose": "maskable any"
     },
     {
-      "src": "Icons/android-launchericon-512-512.png",
+      "src": "assets/icons/icon-384x384.png",
+      "sizes": "384x384",
       "type": "image/png",
-      "sizes": "384x384"
+      "purpose": "maskable any"
     },
     {
-      "src": "Icons/android-launchericon-512-512.png",
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "sizes": "512x512"
+      "purpose": "maskable any"
     }
   ]
 }

@@ -5,12 +5,16 @@
 <head>
   <link rel="manifest" href="manifest.json" />
 <!-- ios support -->
-<link rel="apple-touch-icon" href="Icons\android-launchericon-72-72.png" />
-<link rel="apple-touch-icon" href="Icons\android-launchericon-96-96.png" />
-<link rel="apple-touch-icon" href="Icons\android-launchericon-144-144.png" />
-<link rel="apple-touch-icon" href="Icons\android-launchericon-144-144.png" />
-<link rel="apple-touch-icon" href="Icons\android-launchericon-192-192.png" />
-<link rel="apple-touch-icon" href="Icons\android-launchericon-512-512.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-48x48.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-72x72.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-96x96.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-128x128.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-144x144.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-152x152.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-192x192.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-384x384.png" />
+<link rel="apple-touch-icon" href="assets/icons/icon-512x512.png" />
+
 <meta name="apple-mobile-web-app-status-bar" content="#ffffff" />
 <meta name="theme-color" content="#ffffff" />
 
@@ -18,7 +22,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
-  <title>Squarelator</title>
+  <title>Liquidia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -34,8 +38,8 @@
   <div class="upper">
     <header>
      <center>
-       <img src="logo_aqualator.svg" alt="" class="logo">
-       <h1 class="name">Aqualator</h1>
+       <img src="assets/icons/logo_aqualator.svg" alt="" class="logo">
+       
      </center>
         
  
@@ -140,12 +144,13 @@
 
     <!-- custom date pop up  -->
     <div id="custom-date-popup" style="display: none;">
-      <center>
-        <input type="date" id="custom-date-input" placeholder="select custom" min="" max="" />
+     
+        <div id="popup"> <center><input type="date" id="custom-date-input" placeholder="select custom" min="" max="" />
 
         <button onclick="cancelbtn()" id="close" class="button">Cancel</button>
         <button onclick="donebtn()" id="close" class="button">Done</button>
-      </center>
+      </center></div>
+        
     </div>
 
     <h1 id="nothing">! <br> <span class="nothing__small">Nothing Here Add Something </span></h1>
