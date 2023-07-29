@@ -1,6 +1,4 @@
-<p align="center">
   <img src="https://i.ibb.co/cCcrTJM/Untitled.png" height="100px" width="auto"/>
-</p>
 
 ## About
 
