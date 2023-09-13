@@ -242,6 +242,7 @@ input:invalid {
   border-radius: 12px;
   display: flex;
   justify-content: center;
+  cursor: pointer;
   align-items: center;
 }
 
@@ -329,7 +330,9 @@ h3 {
   scrollbar-width: none;
   /* Firefox */
 }
-
+.button {
+  cursor: pointer;
+}
 .button:nth-child(1) {
   display: inline;
   font-family: "Google Sans", sans-serif;
@@ -337,6 +340,7 @@ h3 {
   border: none;
   height: 35px;
   width: 100px;
+
   border-radius: 30px;
   color: white;
 }
