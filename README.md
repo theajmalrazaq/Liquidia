@@ -1,4 +1,4 @@
-  <img src="https://i.ibb.co/cCcrTJM/Untitled.png" height="100px" width="auto"/>
+  <img src="https://i.ibb.co/85XNCzk/logo-blue-png.png" height="100px" width="auto"/>
 
 ## About
 
