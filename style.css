@@ -129,11 +129,9 @@ table {
 th {
   background-color: #f2f2f2;
   font-family: "Google Sans", sans-serif;
-  position: relative;
   position: -webkit-sticky;
-  /* for Safari */
-  top: 0px;
-  left: 0px;
+  border-radius: 99px;
+  color: #0038ff;
 }
 
 .pd {
