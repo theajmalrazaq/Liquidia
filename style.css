@@ -130,8 +130,10 @@ th {
   background-color: #f2f2f2;
   font-family: "Google Sans", sans-serif;
   position: -webkit-sticky;
-  border-radius: 99px;
+
   color: #0038ff;
+}th:nth-child(1){
+    border-radius: 99px 0px 0px 99px;
 }
 
 .pd {
