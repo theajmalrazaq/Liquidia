@@ -320,18 +320,19 @@ h3 {
 
 }
 
-.area {
-  height: 350px;
-  overflow-y: scroll;
-    position: relative;
-    top: -229px;
-    z-index: 10;
-    background: white;
-    width: 100%;
-    padding: 20px;
+.area_wrapper{
+  position: relative;
+  top: -229px;
+  z-index: 10;
+  background: white;
+  width: 100%;
+  padding: 20px;
 
 }
-
+.area{
+  height: 350px;
+  overflow-y: scroll;
+}
 .area::-webkit-scrollbar {
   display: none;
 }
