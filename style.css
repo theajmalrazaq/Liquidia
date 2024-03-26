@@ -32,8 +32,6 @@ ol::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 16px;
 }
-*{
-  overflow: hidden;}
 /* Handle on hover */
 ol::-webkit-scrollbar-thumb:hover {
   background: #555;
