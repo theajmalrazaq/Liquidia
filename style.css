@@ -123,6 +123,7 @@ table {
   border-spacing: 0;
   width: 100%;
   font-family: "Google Sans", sans-serif;
+  overflow:hidden;
 }
 
 th {
@@ -164,6 +165,9 @@ ol {
 
 .logo {
   height: 45px;
+}
+.clsbtn{
+  padding-top: 20px;
 }
 .name {
   font-family: Lemon Milk;
