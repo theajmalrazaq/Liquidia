@@ -68,7 +68,7 @@ function donebtn() {
     document.getElementById("custom-date-popup").style.display = "none";
     let customdatevalue = document.getElementById("custom-date-input").value;
     slicedvalue = customdatevalue.slice(8, 10);
-    document.getElementById("clear").textContent = slicedvalue;
+    document.getElementById("clear").textContent = `${slicedvalue}`;
   }
 }
 
