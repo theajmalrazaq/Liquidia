@@ -310,19 +310,26 @@ h3 {
   z-index: 2; /* Make sure it's on top of the overlay */
 }
 #reportcard {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  overflow: hidden;
-  padding: 40px;
-  z-index: 10;
-  width: 100%;
-  background: white;
+
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
 }
 
 .area {
   height: 350px;
   overflow-y: scroll;
+    position: relative;
+    top: -229px;
+    z-index: 10;
+    background: white;
+    width: 100%;
+    padding: 20px;
+
 }
 
 .area::-webkit-scrollbar {
