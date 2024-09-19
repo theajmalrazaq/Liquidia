@@ -1,5 +1,13 @@
   <img src="https://i.ibb.co/85XNCzk/logo-blue-png.png" height="100px" width="auto"/>
 
+
+## Hactoberfest TODOS
+1. Currency Selection
+2. Customizable Units
+3. Export Data
+4. Dark Mode
+5. Import and Export Data (Export and import as JSON)
+
 ## About
 
 Welcome to my Progressive web application designed to make tracking your daily liquid purchases a breeze. With my web app, you can easily keep track of the quantity of liquids you buy each day, and at the end of the month, our calculator will automatically calculate your total quantity and price.
