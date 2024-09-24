@@ -7,6 +7,7 @@
 3. Export Data
 4. Dark Mode
 5. Import and Export Data (Export and import as JSON)
+6. Add Service Workers For Offline Access
 
 ## About
 
