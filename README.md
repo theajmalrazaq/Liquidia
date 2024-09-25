@@ -2,12 +2,12 @@
 
 
 ## Hactoberfest TODOS
-1. Currency Selection
-2. Customizable Units
-3. Export Data
-4. Dark Mode
-5. Import and Export Data (Export and import as JSON)
-6. Add Service Workers For Offline Access
+1.Currency selection
+2.Customizable units
+3.Export invoices (PDF/PNG)
+4.Dark mode (assigned)
+5.Import/export data (JSON)
+6.Offline access with service workers
 
 ## About
 
