@@ -13,6 +13,51 @@ themeSwitch.addEventListener("change", () => {
     html.classList.remove("dark-mode"); 
   }
 });
+
+function showSettings() {
+  const flashMessage = document.createElement('div');
+  flashMessage.textContent = 'Settings will be added soon!';
+  flashMessage.style.position = 'fixed';
+  flashMessage.style.top = '20px';
+  flashMessage.style.right = '10px';
+  flashMessage.style.transform = 'translateX(-50%)';
+  flashMessage.style.padding = '10px';
+  flashMessage.style.backgroundColor = '#0038ff';
+  flashMessage.style.color = 'white';
+  flashMessage.style.borderRadius = '5px';
+  flashMessage.style.zIndex = '1000';
+  
+  document.body.appendChild(flashMessage);
+  
+  setTimeout(() => {
+    flashMessage.remove();
+  }, 3000);
+}
+
+function showStatistics() {
+  const items = JSON.parse(localStorage.getItem("quantity-list")) || [];
+  const totalQuantity = items.reduce((sum, item) => sum + parseFloat(item.value), 0);
+  console.log("Total Quantity:", totalQuantity);
+  const flashMessage = document.createElement('div');
+  flashMessage.textContent = 'Check the console for the total quantity so far!';
+  flashMessage.style.position = 'fixed';
+  flashMessage.style.top = '20px';
+  flashMessage.style.zIndex = '1000';
+  flashMessage.style.right = '10px';
+  flashMessage.style.transform = 'translateX(-50%)';
+  flashMessage.style.padding = '10px';
+  flashMessage.style.backgroundColor = '#0038ff';
+  flashMessage.style.color = 'white';
+  flashMessage.style.borderRadius = '5px';
+  flashMessage.style.zIndex = '1000';
+  
+  document.body.appendChild(flashMessage);
+  
+  setTimeout(() => {
+    flashMessage.remove();
+  }, 3000);
+}
+
 function showLastFifteenItems() {
   const items = JSON.parse(localStorage.getItem("quantity-list")) || [];
   const lastFifteenItems = items.slice(-15);
