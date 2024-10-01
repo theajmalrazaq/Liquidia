@@ -480,7 +480,7 @@ h3 {
   height: 100%;
   overflow: hidden;
   z-index: -1; 
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  background: white;
 }
 
 .shape {
