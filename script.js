@@ -83,32 +83,7 @@ function showLastFifteenItems() {
   }, 3000);
 }
 
-function createDroplet() {
-  const droplet = document.createElement('div');
-  droplet.classList.add('droplet');
-  droplet.style.left = Math.random() * 100 + 'vw';
-  
-  const size = Math.random() * 20 + 10;
-  droplet.style.width = size + 'px';
-  droplet.style.height = size * 1.3 + 'px'; 
-  droplet.style.borderRadius = '50% 50% 50% 50% / 60% 60% 40% 40%';
-  droplet.style.transform = 'rotate(45deg)'; 
-  
-  // Check if dark mode is active
-  if (document.body.classList.contains('dark-mode')) {
-    droplet.style.backgroundColor = '#c4f0f0'; // Light color for dark mode
-  } else {
-    droplet.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'; // Dark color for light mode
-  }
-  
-  document.body.appendChild(droplet);
 
-  setTimeout(() => {
-    droplet.remove();
-  }, 4000);
-}
-
-setInterval(createDroplet, 200);
 
 
 function clearstorage() {
