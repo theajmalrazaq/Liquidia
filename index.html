@@ -34,12 +34,40 @@
 <body>
 
 
-  <div class="upper">
+  
+    
+
+    
     <header>
-     <center>
-       <img src="assets/icons/logo_aqualator.svg" alt="" class="logo">
-       
-     </center>
+    
+      <div class="upper">
+        <nav class="navbar">
+          <div class="logo-container">
+            <img src="assets/icons/logo_aqualator.svg" alt="" class="logo">
+            
+          </div>
+
+          <div>
+          <ul>
+
+            <li><a href="#home">Home</a></li>
+            <li><a href="#stats" onclick="showStatistics()">Statistics</a></li>
+            <li><a href="#history" onclick="showLastFifteenItems()">History</a></li>
+            <li><a href="#settings" onclick="showSettings()">Settings</a></li>
+          </ul>
+        </div>
+
+          <div class="theme-toggle">
+            <input type="checkbox" id="theme-switch" class="theme-switch">
+            <label for="theme-switch" class="switch-label">
+              <span class="sun">☀️</span>
+              <span class="moon">🌙</span>
+            </label>
+          </div>
+        </nav>
+      </div>
+     
+    
         
  
     </header>
@@ -65,7 +93,21 @@
           <!-- Input Area-->
 
           <div class="text">
-            <input id="add" type="number" min="1" placeholder="add quantity"/>
+            <!-- <select id="currency" style="margin-left: 5px; padding: 11px; background: #f2f2f2; border: none; border-radius: 25px; font-size: 14px;">
+              <option value="usd">USD</option>
+              <option value="eur">EUR</option>
+              <option value="gbp">GBP</option>
+              <option value="jpy">JPY</option>
+              <option value="cad">CAD</option>
+            </select> -->
+            <input id="add" type="number" min="1" placeholder="Add quantity" style="width: 500px; padding-top: 10px;"/>
+            <select id="unit" style="margin-left: 5px; padding: 11px; background: #f2f2f2; border: none; border-radius: 25px; font-size: 14px;">
+              <option value="ml">ml</option>
+              <option value="l">L</option>
+              <option value="oz">oz</option>
+              <option value="gal">gal</option>
+            </select>
+            
           </div>
         </div>
 
@@ -135,7 +177,7 @@
   </div>
   </div>
 
-<h3>Recently added</h3>
+<h3 class="recently">Recently added</h3>
 
   <!-- lower section -->
 
