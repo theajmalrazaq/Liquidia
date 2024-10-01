@@ -337,12 +337,11 @@ h3 {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .area {
   -ms-overflow-style: none;
-  /* IE and Edge */
+
   scrollbar-width: none;
-  /* Firefox */
+
 }
 .button {
   cursor: pointer;
@@ -377,4 +376,171 @@ h3 {
   width: 80px;
   border-radius: 30px;
   color: white;
+}
+
+
+
+.button:hover {
+  background-color: #0038ff;
+  transform: scale(1.05);
+}
+
+@keyframes rotate-icon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.icon svg {
+  animation: rotate-icon 2s linear infinite;
+}
+
+ol {
+  animation: scroll-smooth 1.5s ease-in-out;
+}
+
+@keyframes scroll-smooth {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+input[type="number"], input[type="date"] {
+  animation: pulse-input 2s infinite alternate;
+}
+
+@keyframes pulse-input {
+  0% {
+    border-color: #f2f2f2;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  }
+  100% {
+    border-color: #0038ff;
+    box-shadow: 0 0 10px rgba(0, 56, 255, 0.4);
+  }
+}
+
+/* Fade-in effect for 'Recently added' section */
+h3 {
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bounce effect on 'Count' button */
+#countbtn {
+  animation: bounce 1s ease infinite alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animation for adding items to the list */
+#list-items {
+  animation: listItemAppear 1s ease-out;
+}
+
+@keyframes listItemAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; 
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+.shape {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.15); 
+  filter: blur(8px);
+  border-radius: 50%;
+  animation: moveShapes 15s infinite linear;
+  opacity: 0.7; 
+}
+.shape-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 15%;
+  background-color: rgba(255, 0, 150, 0.15); /* Slightly pink */
+  animation-duration: 20s;
+}
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  top: 40%;
+  left: 70%;
+  background-color: rgba(0, 150, 255, 0.15); /* Slightly blue */
+  animation-duration: 18s;
+}
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  top: 70%;
+  left: 25%;
+  background-color: rgba(150, 255, 0, 0.15); /* Slightly green */
+  animation-duration: 22s;
+}
+.shape-4 {
+  width: 250px;
+  height: 250px;
+  top: 60%;
+  left: 80%;
+  background-color: rgba(255, 150, 0, 0.15); /* Slightly orange */
+  animation-duration: 25s;
+}
+.shape-5 {
+  width: 180px;
+  height: 180px;
+  top: 20%;
+  left: 50%;
+  background-color: rgba(0, 255, 255, 0.15); /* Slightly cyan */
+  animation-duration: 28s;
+}
+
+/* Animation for shapes - moves them across the screen */
+@keyframes moveShapes {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(100px, 200px) scale(1.2);
+  }
+  100% {
+    transform: translate(-100px, -200px) scale(1);
+  }
 }
