@@ -1,228 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liquidia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @media (max-width: 640px) {
+        .scrollbar-hidden::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hidden {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      }
+    </style>
+  </head>
 
-
-<head>
- 
-   
-   <link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="assets/icons/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="assets/icons/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="assets/icons/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="assets/icons/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
-<link rel="manifest" href="manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="assets/icons/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <title>Liquidia</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-
-  
-    
-
-    
-    <header>
-    
-      <div class="upper">
-        <nav class="navbar">
-          <div class="logo-container">
-            <img src="assets/icons/logo_aqualator.svg" alt="" class="logo">
-            
+  <body
+    class="light-mode h-full bg-gray-100 dark:bg-gray-900 transition-colors duration-200 flex flex-col"
+  >
+    <header
+      class="light-mode bg-white dark:bg-gray-800 shadow-md transition-colors duration-200"
+    >
+      <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center py-3"
+        >
+          <div class="flex justify-between items-center w-full md:w-auto">
+            <div class="text-xl font-semibold text-gray-700 dark:text-gray-300">
+              <img
+                src="assets/icons/logo_aqualator.svg"
+                alt="Liquidia"
+                class="h-8 w-auto"
+              />
+            </div>
+            <button
+              id="mobile-menu-button"
+              class="md:hidden text-gray-500 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
           </div>
-
-          <div>
-          <ul>
-
-            <li><a href="#home">Home</a></li>
-            <li><a href="#stats" onclick="showStatistics()">Statistics</a></li>
-            <li><a href="#history" onclick="showLastFifteenItems()">History</a></li>
-            <li><a href="#settings" onclick="showSettings()">Settings</a></li>
-          </ul>
+          <div
+            id="mobile-menu"
+            class="hidden md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 w-full md:w-auto mt-4 md:mt-0"
+          >
+            <a
+              href="#home"
+              class="text-gray-800 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium w-full md:w-auto text-center"
+              >Home</a
+            >
+            <a
+              href="#stats"
+              onclick="showStatistics()"
+              class="text-gray-800 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium w-full md:w-auto text-center"
+              >Statistics</a
+            >
+            <a
+              href="#history"
+              onclick="showLastFifteenItems()"
+              class="text-gray-800 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium w-full md:w-auto text-center"
+              >History</a
+            >
+            <a
+              href="#settings"
+              onclick="showSettings()"
+              class="text-gray-800 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium w-full md:w-auto text-center"
+              >Settings</a
+            >
+            <div class="flex items-center space-x-3 mt-4 md:mt-0">
+              <div class="relative">
+                <button
+                  id="theme-toggle"
+                  type="button"
+                  class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+                >
+                  <svg
+                    id="theme-toggle-dark-icon"
+                    class="w-5 h-5 hidden"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                    ></path>
+                  </svg>
+                  <svg
+                    id="theme-toggle-light-icon"
+                    class="w-5 h-5 hidden"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-
-          <div class="theme-toggle">
-            <input type="checkbox" id="theme-switch" class="theme-switch">
-            <label for="theme-switch" class="switch-label">
-              <span class="sun">☀️</span>
-              <span class="moon">🌙</span>
-            </label>
-          </div>
-        </nav>
-      </div>
-     
-    
-        
- 
+      </nav>
     </header>
 
+    <main class=" flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="mb-6 space-y-4">
+        <div
+          class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3"
+        >
+          <p
+            class="icon-txt cursor-pointer font-bold font-lemonmilk"
+            onclick="showcustomdatepopup()"
+            id="clear"
+          >
+            📅 Custom Date
+          </p>
+          <input
+            type="number"
+            id="add"
+            placeholder="Add quantity"
+            class="w-full sm:w-auto flex-grow px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <select
+            id="unit"
+            class="w-full sm:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="ml">ml</option>
+            <option value="l">L</option>
+            <option value="oz">oz</option>
+            <option value="gal">gal</option>
+          </select>
+          <button
+            onclick="addItem()"
+            class="w-full sm:w-auto bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+          >
+            Add
+          </button>
+        </div>
+      </div>
 
-    
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6"
+      >
+        <button
+          onclick="countbeforemonth()"
+          id="cbmbtn"
+          class="w-full bg-yellow-500 dark:bg-yellow-600 hover:bg-yellow-600 dark:hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+        >
+          Count Now!
+        </button>
+        <button
+          onclick="clearstorage()"
+          id="clearstorage"
+          class="w-full bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+        >
+          Clear
+        </button>
+        <button
+          onclick="countall()"
+          id="countbtn"
+          class="w-full bg-green-500 dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+        >
+          Count
+        </button>
+        <input
+          type="number"
+          id="price-input"
+          placeholder="Price per Ltr."
+          min="1"
+          class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
 
+      <h3
+        class="text-lg sm:text-xl font-semibold mb-4 "
+      >
+        Recently added
+      </h3>
 
+      <div
+        id="list-items"
+        class="scrollbar-hidden space-y-4 max-h-72 overflow-y-auto scrollbar-hidden pb-4"
+      ></div>
 
+      <div
+        id="nothing"
+        class="text-center text-xl sm:text-2xl font-bold text-blue-500 dark:text-blue-400 mt-8 hidden"
+      >
+        !<br /><span class="text-sm text-gray-500 dark:text-gray-400"
+          >Nothing Here Add Something</span
+        >
+      </div>
 
-    <!-- add section  -->
-
-    <div class="button-wrap">
-      <!--Select custom date button -->
-      <button class="button-long">
-        <div class="flex">
-          <div class="icon-bg">
-            <p class="icon-txt" onclick="showcustomdatepopup()" class="button expanded" id="clear">
-                     
-            </p>
-          </div>
-
-          <!-- Input Area-->
-
-          <div class="text">
-            <!-- <select id="currency" style="margin-left: 5px; padding: 11px; background: #f2f2f2; border: none; border-radius: 25px; font-size: 14px;">
-              <option value="usd">USD</option>
-              <option value="eur">EUR</option>
-              <option value="gbp">GBP</option>
-              <option value="jpy">JPY</option>
-              <option value="cad">CAD</option>
-            </select> -->
-            <input id="add" type="number" min="1" placeholder="Add quantity" style="width: 500px; padding-top: 10px;"/>
-            <select id="unit" style="margin-left: 5px; padding: 11px; background: #f2f2f2; border: none; border-radius: 25px; font-size: 14px;">
-              <option value="ml">ml</option>
-              <option value="l">L</option>
-              <option value="oz">oz</option>
-              <option value="gal">gal</option>
-            </select>
-            
+      <div
+        id="custom-date-popup"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50"
+      >
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg w-full max-w-sm mx-4"
+        >
+          <input
+            type="date"
+            id="custom-date-input"
+            class="w-full mb-4 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <div class="flex justify-end space-x-4">
+            <button
+              onclick="cancelbtn()"
+              class="bg-gray-500 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            >
+              Cancel
+            </button>
+            <button
+              onclick="donebtn()"
+              class="bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            >
+              Done
+            </button>
           </div>
         </div>
+      </div>
+    </main>
 
-        <!--add button -->
-
-        <div class="icon-bg" style="background-color: transparent;">
-          <div class="icon" onclick="addItem(),mixfun()">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-              <style>
-                @keyframes loader8 {
-                  0% {
-                    transform: scale(1) rotateZ(0)
-                  }
-
-                  50% {
-                    transform: scale(1.5) rotateZ(180deg)
-                  }
-
-                  to {
-                    transform: scale(1) rotateZ(360deg)
-                  }
-                }
-              </style>
-              <g style="animation:loader8 1s cubic-bezier(.72,.08,.38,.87) infinite both;transform-origin:center">
-                <path stroke="#161616" stroke-linecap="round" stroke-width="1.5" d="M12.035 8v8M16 12H8" />
-                <circle cx="12" cy="12" r="1.635" fill="#0172FF" />
-              </g>
-            </svg>
+    <div
+      id="reportcard"
+      style="display: none"
+      class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+    >
+      <div
+        class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-11/12 max-w-lg"
+      >
+        <div
+          class="relative z-10 bg-white dark:bg-gray-800 w-full p-5 rounded-lg"
+        >
+          <div class="h-60 sm:h-80 overflow-y-scroll scrollbar-hidden">
+            <span
+              id="final"
+              class="block text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
+            ></span>
+          </div>
+          <div class="mt-4 flex justify-center">
+            <button
+              onclick="closebtn(), mixfun()"
+              id="close"
+              class="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+            >
+              Close
+            </button>
+          </div>
         </div>
-      
-      </button>
-    </div>
-
-
-
-<!-- count section  -->
-
-    <div class="countbtns">
-      <button onclick="countbeforemonth()" id="cbmbtn" class="button " style="display: none;">Count Now!</button>
-      <button onclick="clearstorage()" id="clearstorage" class="button">Clear</button>
-      <button onclick="countall()" id="countbtn" class="button">Count</button>
-      <input type="number" class="price" id="price-input" placeholder="Price per Ltr. " min="1"
-        style="display:none ;" />
-    </div>
-
-
-    <!-- icons section  -->
-
-    <!-- svg icons for exporting them to js  -->
-
-    <span id="icon1" style="display: none;">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-        
-        <path fill="#161616"
-          d="M16.773 10.083a.75.75 0 00-1.49-.166l1.49.166zm-1.535 7.027l.745.083-.745-.083zm-6.198 0l-.745.083.745-.083zm-.045-7.193a.75.75 0 00-1.49.166l1.49-.166zm5.249 7.333h-4.21v1.5h4.21v-1.5zm1.038-7.333l-.79 7.11 1.491.166.79-7.11-1.49-.166zm-5.497 7.11l-.79-7.11-1.49.166.79 7.11 1.49-.165zm.249.223a.25.25 0 01-.249-.222l-1.49.165a1.75 1.75 0 001.739 1.557v-1.5zm4.21 1.5c.892 0 1.64-.67 1.74-1.557l-1.492-.165a.25.25 0 01-.248.222v1.5z" />
-        <path fill="#0172FF" fill-rule="evenodd"
-          d="M11 6a1 1 0 00-1 1v.25H7a.75.75 0 000 1.5h10a.75.75 0 000-1.5h-3V7a1 1 0 00-1-1h-2z" clip-rule="evenodd"
-          style="animation:rotate-tr 1s cubic-bezier(1,-.28,.01,1.13) infinite alternate-reverse both;transform-origin:right center" />
-      </svg>
-
-
-    </span>
-    
-  </div>
-
-  </div>
-  </div>
-  </div>
-
-<h3 class="recently">Recently added</h3>
-
-  <!-- lower section -->
-
-  <div class="lower">
-
-    <!-- custom date pop up  -->
-    <div id="custom-date-popup" style="display: none;">
-     
-        <div id="popup"> <center><input type="date" id="custom-date-input" placeholder="select custom" min="" max="" />
-
-        <button onclick="cancelbtn()" id="close" class="button">Cancel</button>
-        <button onclick="donebtn()" id="close" class="button">Done</button>
-      </center></div>
-        
-    </div>
-
-    <h1 id="nothing">! <br> <span class="nothing__small">Nothing Here Add Something </span></h1>
-    <!-- report pop up  -->
-
-
-    <div id="reportcard" style="display:none;">
-      <div class="area_wrapper">
-      <div class="area">
-        <span id="final"></span>
-      </div>
-      <div class="clsbtn"><center>
-        <button onclick="closebtn(), mixfun()" id="close" class="button"> Close</button>
-      </center></div>
       </div>
     </div>
 
+    <footer
+      class="light-mode bg-white dark:bg-gray-800 shadow-md py-4 transition-colors duration-200 mt-auto"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          &copy; 2024 Liquidia. All rights reserved.
+        </p>
+      </div>
+    </footer>
 
-    <!-- Quantity list  -->
-
-    <ol id="list-items">
-    </ol>
-
-  </div>
-  </div>
-  </div>
-
-  <!--importing js -->
-
-  <script src="script.js"></script>
-
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -1,34 +1,113 @@
-// Clear localstorage and reload
+console.log("first");
 
-const themeSwitch = document.getElementById("theme-switch");
-const body = document.body;
-const html = document.documentElement; // Get the root HTML element
+// Theme toggle functionality
+const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+const themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+const themeToggleBtn = document.getElementById("theme-toggle");
 
-themeSwitch.addEventListener("change", () => {
-  if (themeSwitch.checked) {
-    body.classList.add("dark-mode");
-    html.classList.add("dark-mode"); 
+// Function to set the theme
+function setTheme(theme) {
+  if (theme === "dark") {
+    document.documentElement.style.setProperty("--bg-color", "#2c2f33"); // Dark background
+    document.documentElement.style.setProperty("--text-color", "#f5f5f5"); // Light text
+    themeToggleLightIcon.classList.remove("hidden");
+    themeToggleDarkIcon.classList.add("hidden");
+    localStorage.setItem("color-theme", "dark");
   } else {
-    body.classList.remove("dark-mode");
-    html.classList.remove("dark-mode"); 
+    document.documentElement.style.setProperty("--bg-color", "#f9f9f9"); // Light background
+    document.documentElement.style.setProperty("--text-color", "#00274d"); // Dark text
+    themeToggleDarkIcon.classList.remove("hidden");
+    themeToggleLightIcon.classList.add("hidden");
+    localStorage.setItem("color-theme", "light");
+  }
+
+  // Apply the theme after setting it
+  applyTheme();
+}
+
+// Set the initial theme
+if (
+  localStorage.getItem("color-theme") === "dark" ||
+  (!("color-theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  setTheme("dark");
+} else {
+  setTheme("light");
+}
+
+// Toggle theme when button is clicked
+themeToggleBtn.addEventListener("click", function () {
+  if (localStorage.getItem("color-theme") === "light") {
+    setTheme("dark");
+  } else {
+    setTheme("light");
   }
 });
 
+// Apply theme to all relevant elements
+function applyTheme() {
+  const bgColor = getComputedStyle(document.documentElement).getPropertyValue(
+    "--bg-color"
+  );
+  const textColor = getComputedStyle(document.documentElement).getPropertyValue(
+    "--text-color"
+  );
+
+  // Apply background and text color to the body
+  document.body.style.backgroundColor = bgColor;
+  document.body.style.color = textColor;
+
+  // Apply background and text color to header and footer
+  const header = document.querySelector("header");
+  const footer = document.querySelector("footer");
+  
+  if (header) {
+    header.style.backgroundColor = bgColor === "#f9f9f9" ? "#e0e0e0" : "#23272a"; // Light gray or dark slate gray
+    header.style.color = textColor;
+  }
+
+  if (footer) {
+    footer.style.backgroundColor = bgColor === "#f9f9f9" ? "#e0e0e0" : "#23272a"; // Light gray or dark slate gray
+    footer.style.color = textColor;
+  }
+
+  // Additional elements can be styled here if needed
+}
+
+// Call applyTheme on page load and whenever the theme changes
+document.addEventListener("DOMContentLoaded", function () {
+  applyTheme();
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileMenuButton.addEventListener("click", function () {
+    mobileMenu.classList.toggle("hidden");
+  });
+});
+
 function showSettings() {
-  const flashMessage = document.createElement('div');
-  flashMessage.textContent = 'Settings will be added soon!';
-  flashMessage.style.position = 'fixed';
-  flashMessage.style.top = '20px';
-  flashMessage.style.right = '10px';
-  flashMessage.style.transform = 'translateX(-50%)';
-  flashMessage.style.padding = '10px';
-  flashMessage.style.backgroundColor = '#0038ff';
-  flashMessage.style.color = 'white';
-  flashMessage.style.borderRadius = '5px';
-  flashMessage.style.zIndex = '1000';
-  
+  const flashMessage = document.createElement("div");
+  flashMessage.textContent = "Settings will be added soon!";
+  flashMessage.classList.add(
+    "fixed",
+    "top-5",
+    "right-2",
+    "transform",
+    "translate-x-[-50%]",
+    "p-2",
+    "bg-blue-600",
+    "text-white",
+    "rounded",
+    "z-50"
+  );
+
   document.body.appendChild(flashMessage);
-  
+
   setTimeout(() => {
     flashMessage.remove();
   }, 3000);
@@ -36,55 +115,122 @@ function showSettings() {
 
 function showStatistics() {
   const items = JSON.parse(localStorage.getItem("quantity-list")) || [];
-  const totalQuantity = items.reduce((sum, item) => sum + parseFloat(item.value), 0);
+  const totalQuantity = items.reduce(
+    (sum, item) => sum + parseFloat(item.value),
+    0
+  );
   console.log("Total Quantity:", totalQuantity);
-  const flashMessage = document.createElement('div');
-  flashMessage.textContent = 'Check the console for the total quantity so far!';
-  flashMessage.style.position = 'fixed';
-  flashMessage.style.top = '20px';
-  flashMessage.style.zIndex = '1000';
-  flashMessage.style.right = '10px';
-  flashMessage.style.transform = 'translateX(-50%)';
-  flashMessage.style.padding = '10px';
-  flashMessage.style.backgroundColor = '#0038ff';
-  flashMessage.style.color = 'white';
-  flashMessage.style.borderRadius = '5px';
-  flashMessage.style.zIndex = '1000';
-  
-  document.body.appendChild(flashMessage);
-  
+
+  // Create a toast container if it doesn't exist
+  let toastContainer = document.getElementById("toast-container");
+  if (!toastContainer) {
+    toastContainer = document.createElement("div");
+    toastContainer.id = "toast-container";
+    toastContainer.classList.add(
+      "fixed",
+      "top-5",
+      "right-5",
+      "z-50",
+      "space-y-3",
+      "max-w-xs",
+      "w-full"
+    );
+    document.body.appendChild(toastContainer);
+  }
+
+  // Create the toast message
+  const toastMessage = document.createElement("div");
+  toastMessage.textContent = "Check the console for the total quantity so far!";
+  toastMessage.classList.add(
+    "bg-green-500", // Green color to indicate stats/info
+    "text-white",
+    "p-4",
+    "rounded-lg",
+    "shadow-lg",
+    "opacity-0",
+    "transform",
+    "translate-y-5",
+    "transition",
+    "duration-500",
+    "ease-in-out",
+    "hover:bg-green-600"
+  );
+
+  // Add the toast message to the container
+  toastContainer.appendChild(toastMessage);
+
+  // Trigger animation for the toast to appear
   setTimeout(() => {
-    flashMessage.remove();
-  }, 3000);
+    toastMessage.classList.remove("opacity-0", "translate-y-5");
+    toastMessage.classList.add("opacity-100", "translate-y-0");
+  }, 100); // Delay for animation to start
+
+  // Remove the toast after a timeout
+  setTimeout(() => {
+    toastMessage.classList.add("opacity-0", "translate-y-5");
+    setTimeout(() => {
+      toastMessage.remove();
+    }, 500); // Delay removal for transition
+  }, 3000); // Toast duration
 }
 
 function showLastFifteenItems() {
   const items = JSON.parse(localStorage.getItem("quantity-list")) || [];
   const lastFifteenItems = items.slice(-15);
   console.log(lastFifteenItems);
-  
-  // Flash message to check console
-  const flashMessage = document.createElement('div');
-  flashMessage.textContent = 'Check the console for the last 15 items!';
-  flashMessage.style.position = 'fixed';
-  flashMessage.style.top = '20px';
-  flashMessage.style.right = '10px';
-  flashMessage.style.transform = 'translateX(-50%)';
-  flashMessage.style.padding = '10px';
-  flashMessage.style.backgroundColor = '#0038ff';
-  flashMessage.style.color = 'white';
-  flashMessage.style.borderRadius = '5px';
-  flashMessage.style.zIndex = '1000';
-  
-  document.body.appendChild(flashMessage);
-  
+
+  // Create a toast container if it doesn't exist
+  let toastContainer = document.getElementById("toast-container");
+  if (!toastContainer) {
+    toastContainer = document.createElement("div");
+    toastContainer.id = "toast-container";
+    toastContainer.classList.add(
+      "fixed",
+      "top-5",
+      "right-5",
+      "z-50",
+      "space-y-3",
+      "max-w-xs",
+      "w-full"
+    );
+    document.body.appendChild(toastContainer);
+  }
+
+  // Create the toast message
+  const toastMessage = document.createElement("div");
+  toastMessage.textContent = "Check the console for the last 15 items!";
+  toastMessage.classList.add(
+    "bg-blue-600",
+    "text-white",
+    "p-4",
+    "rounded-lg",
+    "shadow-lg",
+    "opacity-0",
+    "transform",
+    "translate-y-5",
+    "transition",
+    "duration-500",
+    "ease-in-out",
+    "hover:bg-blue-700"
+  );
+
+  // Add the toast message to the container
+  toastContainer.appendChild(toastMessage);
+
+  // Trigger animation
   setTimeout(() => {
-    flashMessage.remove();
-  }, 3000);
+    toastMessage.classList.remove("opacity-0", "translate-y-5");
+    toastMessage.classList.add("opacity-100", "translate-y-0");
+  }, 100); // Delay for animation to start
+
+  // Remove the toast after a timeout
+  setTimeout(() => {
+    toastMessage.classList.add("opacity-0", "translate-y-5");
+    setTimeout(() => {
+      toastMessage.remove();
+    }, 500); // Delay removal for transition
+  }, 3000); // Toast duration
 }
-
-
-
 
 function clearstorage() {
   if (confirm("Do You Really Want to Clear All List?")) {
@@ -92,153 +238,70 @@ function clearstorage() {
     window.location.reload();
   }
 }
+
 var slicedvalue;
 // items array that contains all quantity items
 // JSON.parse is used to parse the stringified items from localStorage
 // if localStorage is empty, make the items variable an empty array
 let items = JSON.parse(localStorage.getItem("quantity-list")) || [];
-
 // svg icons veriables to import icon from html
-
-let svg1 = document.getElementById("icon1").innerHTML;
+let svg1 =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>';
 
 // function to get days in month for showing count button when month complete
 
-function getdaysinmonth(year, month) {
-  return new Date(year, month, 0).getDate();
-}
 const date = new Date();
 const currentyear = date.getFullYear();
 const currentmonth = date.getMonth() + 1;
-const daysincurrentmonth = getdaysinmonth(currentyear, currentmonth);
-const dayslength = daysincurrentmonth;
+const daysincurrentmonth = new Date(currentyear, currentmonth, 0).getDate();
 document.getElementById("clear").textContent = date.getDate();
-// mix function run when page open to reset values and perform other functions
-document
-  .getElementById("custom-date-input")
-  .setAttribute("min", currentyear + "-" + "0" + currentmonth + "-" + "01");
-document
-  .getElementById("custom-date-input")
-  .setAttribute(
-    "max",
-    currentyear + "-" + "0" + currentmonth + "-" + dayslength
-  );
 
-// custom date slection
+document
+  .getElementById("custom-date-input")
+  .setAttribute("min", `${currentyear}-0${currentmonth}-01`);
+document
+  .getElementById("custom-date-input")
+  .setAttribute("max", `${currentyear}-0${currentmonth}-${daysincurrentmonth}`);
+
 function showcustomdatepopup() {
-  if (
-    document.getElementById("custom-date-input").value === "" ||
-    document.getElementById("custom-date-popup").style.display === ""
-  ) {
-    document.getElementById("custom-date-popup").style.display = "none";
-  }
-  if (document.getElementById("custom-date-popup").style.display === "none") {
-    document.getElementById("custom-date-popup").style.display = "";
-  } else {
-    document.getElementById("custom-date-input").value = "";
-    document.getElementById("custom-date-popup").style.display = "none";
-  }
+  const popup = document.getElementById("custom-date-popup");
+  const input = document.getElementById("custom-date-input");
+
+  popup.classList.toggle("block");
+  popup.classList.toggle("hidden");
+  input.value = "";
 }
 
-// cancel button on cudtom date picker pop up
-
+// cancel button on custom date picker pop-up
 function cancelbtn() {
   document.getElementById("custom-date-input").value = "";
-  document.getElementById("custom-date-popup").style.display = "none";
+  document.getElementById("custom-date-popup").classList.add("hidden");
 }
-// done button on cudtom date picker pop up
+
+// done button on custom date picker pop-up
 function donebtn() {
-  if (document.getElementById("custom-date-input").value === "") {
+  const input = document.getElementById("custom-date-input");
+  if (input.value === "") {
     alert("Put date");
-  }
-  if (document.getElementById("custom-date-input").value != "") {
-    document.getElementById("custom-date-popup").style.display = "none";
-    let customdatevalue = document.getElementById("custom-date-input").value;
+  } else {
+    document.getElementById("custom-date-popup").classList.add("hidden");
+    let customdatevalue = input.value;
     slicedvalue = customdatevalue.slice(8, 10);
     document.getElementById("clear").textContent = `${slicedvalue}`;
   }
 }
 
-function mixfun() {
-  let comp = items.length <= 0;
-
-  if (document.getElementById("add").value != "") {
-    document.getElementById("add").value = "";
-  }
-
-  if (document.getElementById("price-input").value != "") {
-    document.getElementById("price-input").value = "";
-  }
-
-  if ((document.getElementById("countbtn").style.display = "")) {
-    document.getElementById("clearstorage").style.display = "none";
-  }
-
-  // shows count butoon and hide other buttons when month completed
-
-  if (items.length < dayslength) {
-    document.getElementById("countbtn").style.display = "none";
-    document.getElementById("cbmbtn").style.display = "";
-    document.getElementById("clearstorage").style.display = "";
-    document.getElementById("nothing").style.display = "none";
-    document.getElementById("price-input").style.display = "none";
-  } else {
-    document.getElementById("price-input").style.display = "";
-    document.getElementById("cbmbtn").style.display = "none";
-    document.getElementById("clearstorage").style.display = "";
-    document.getElementById("countbtn").style.display = "";
-  }
-  if (comp === true) {
-    document.getElementById("cbmbtn").style.display = "none";
-    document.getElementById("nothing").style.display = "";
-    document.getElementById("clearstorage").style.display = "none";
-  }
-}
-
-// function to perform and shows count button before completing month
-
-function countbeforemonth() {
-  if (confirm("Do you really want to count before completing month?")) {
-    document.getElementById("countbtn").style.display = "";
-    document.getElementById("price-input").style.display = "";
-    document.getElementById("clearstorage").style.display = "none";
-    document.getElementById("cbmbtn").style.display = "none";
-  }
-  if (document.getElementById("custom-date-input").value === "") {
-    document.getElementById("custom-date-popup").style.display = "none";
-  }
-}
-// function to add item to the items array
-
 function addItem() {
-  // get the value of the input box with querySelector
   var item = document.getElementById("add").value;
   var unit = document.getElementById("unit").value;
-  // If input box is empty, return and alert the user
-  // You can also do some more validation if here if you want
+
   if (item === "0") {
     return alert("You need to put a value more than zero");
-  }
-  if (
-    item === "" &&
-    document.getElementById("custom-date-input").value === "" &&
-    document.getElementById("custom-date-popup").style.display === ""
-  ) {
-    return alert("Put Date and Quantity");
-  }
-  if (
-    document.getElementById("custom-date-input").value === "" &&
-    document.getElementById("custom-date-popup").style.display === ""
-  ) {
-    return alert("Put Date");
   }
   if (item === "") {
     return alert("Put Quantity");
   }
-  if (slicedvalue !== date.getDate()) {
-    document.getElementById("clear").textContent = date.getDate();
-  }
-  // if custom date is empty put today date if not than put custom date
+
   let datevalue = new Date(document.getElementById("custom-date-input").value);
   if (document.getElementById("custom-date-input").value === "") {
     items.push({
@@ -247,8 +310,7 @@ function addItem() {
       date: new Date().toLocaleDateString("en-US"),
     });
   } else {
-    document.getElementById("custom-date-input").value = "";
-    document.getElementById("custom-date-popup").style.display = "none";
+    document.getElementById("custom-date-popup").classList.add("hidden");
     items.push({
       value: item,
       unit: unit,
@@ -256,124 +318,131 @@ function addItem() {
     });
   }
 
-  // then convert to a string with JSON.stringify and save to localStorage
   localStorage.setItem("quantity-list", JSON.stringify(items));
 
-  // call function to list all items
   listItems();
 
-  // clear input box
   item = "";
 }
 
-// function to remove item from array with Array.splice()
-// removes item, then saves new items array to localStorage
 function deleteItem(index) {
   if (confirm("Do you really want to Delete?")) {
-    if (document.getElementById("custom-date-popup").style.display === "") {
-      document.getElementById("custom-date-popup").style.display = "none";
-      document.getElementById("custom-date-input").value = "";
-    }
     items.splice(index, 1);
     localStorage.setItem("quantity-list", JSON.stringify(items));
     listItems();
   }
 }
+let draggedItemIndex = null;
 
-// function that generates list of items and populates the html
+// Function to start dragging
+function dragStart(event, index) {
+  draggedItemIndex = index;
+  event.dataTransfer.effectAllowed = "move";
+}
+
+// Function to allow the drop
+function allowDrop(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = "move";
+}
+
+// Function to handle the item drop
+function dropItem(event, dropIndex) {
+  event.preventDefault();
+  // Ensure the dragged item index is valid
+  if (draggedItemIndex !== null && draggedItemIndex !== dropIndex) {
+    // Swap the items in the array
+    let draggedItem = items[draggedItemIndex];
+    items.splice(draggedItemIndex, 1);
+    items.splice(dropIndex, 0, draggedItem);
+
+    // Update the localStorage after reordering
+    localStorage.setItem("quantity-list", JSON.stringify(items));
+    listItems(); // Refresh the list to reflect changes
+  }
+  draggedItemIndex = null; // Reset dragged item index
+}
+
+// List items with draggable functionality
 function listItems() {
   var list = "";
   for (var i = 0; i < items.length; i++) {
     list +=
-      "<div class='button-wrap' draggable='true' ondragstart='dragStart(event)' ondragover='allowDrop(event)' ondrop='dropItem(event)' id='item-" +
+      "<div class='button-wrap flex items-center justify-between bg-gray-100 dark:bg-gray-700 rounded-md p-4 mb-2 shadow-md' draggable='true' ondragstart='dragStart(event, " +
       i +
-      "'><button class='button-long-list'><div class='measure'>" +
-      items[i].value +
-      " " + 
-      items[i].unit +
-      " </div>";
-
-    list +=
-      "<div class='right'><div class='date'><small>" +
+      ")' ondragover='allowDrop(event)' ondrop='dropItem(event, " +
+      i +
+      ")' id='item-" +
+      i +
+      "'>" +
+      "<div class='flex flex-col'>" +
+      "<span class='text-gray-700 dark:text-gray-300 text-sm'>" +
       items[i].date +
-      "</small></div>";
-
-    list +=
-      "<div class='del'><div class='icon-bg'><span class='label alert' onclick='deleteItem(" +
+      "</span>" +
+      "<span class='text-lg font-semibold text-gray-900 dark:text-white'>" +
+      items[i].value +
+      " " +
+      items[i].unit +
+      "</span>" +
+      "</div>" +
+      "<button class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' onclick='deleteItem(" +
       i +
-      "),mixfun()'>" +
+      ")'>" +
       svg1 +
-      "</span></div></div></div></button></div>";
+      "</button>" +
+      "</div>";
   }
-  document.querySelector("#list-items").innerHTML = list;
+  document.getElementById("list-items").innerHTML = list;
 }
 
-// Function to handle dragging
-let draggedItem = null;
+function countbeforemonth() {
+  if (confirm("Do you really want to count before completing the month?")) {
+    // Show the count button and price input
+    document.getElementById("countbtn").classList.remove("hidden");
+    document.getElementById("price-input").classList.remove("hidden");
 
-function dragStart(event) {
-  draggedItem = event.target;
-  event.dataTransfer.setData('text', event.target.id);
-}
+    // Hide the clear storage and CBM buttons
+    document.getElementById("clearstorage").classList.add("hidden");
+    document.getElementById("cbmbtn").classList.add("hidden");
+  }
 
-function allowDrop(event) {
-  event.preventDefault(); // Prevent default to allow drop
-}
-
-function dropItem(event) {
-  event.preventDefault();
-  const draggedItemId = event.dataTransfer.getData('text');
-  const droppedItem = document.getElementById(draggedItemId);
-  const dropTarget = event.target.closest('.button-wrap'); // Drop target should be the full div
-
-  if (dropTarget && draggedItem !== dropTarget) {
-   
-    dropTarget.before(draggedItem);
+  // Hide custom date popup if no custom date is selected
+  if (document.getElementById("custom-date-input").value === "") {
+    document.getElementById("custom-date-popup").classList.add("hidden");
   }
 }
-
-
-// function to run when page loads
-
-(function () {
-  listItems();
-  mixfun();
-})();
-
-//  function to prepare final monthly report
 
 function countall() {
+  // Hide the custom date popup if it's currently displayed
   if (document.getElementById("custom-date-popup").style.display === "") {
     document.getElementById("custom-date-popup").style.display = "none";
     document.getElementById("custom-date-input").value = "";
   }
 
-  let sum = 0; 
+  let sum = 0;
   let summery = "";
   let price = document.getElementById("price-input").value;
 
   // Conversion factors for units to liters
   const conversionFactors = {
-    ml: 0.001,     // 1 ml = 0.001 liters
-    l: 1,          // 1 liter = 1 liter
+    ml: 0.001, // 1 ml = 0.001 liters
+    l: 1, // 1 liter = 1 liter
     oz: 0.0295735, // 1 oz = 0.0295735 liters
-    gal: 3.78541   // 1 gallon = 3.78541 liters
+    gal: 3.78541, // 1 gallon = 3.78541 liters
   };
 
- 
+  // Loop through items and calculate total sum
   for (let c = 0; c < items.length; c++) {
-    let unit = items[c].unit; 
+    let unit = items[c].unit;
     let value = parseFloat(items[c].value);
     let convertedValue = value * conversionFactors[unit];
 
-    
     sum += convertedValue;
 
-   
     summery +=
-      "<tr><td>" +
+      "<tr class='border-b'><td class='px-4 py-2'>" +
       items[c].date +
-      "</td><td>" +
+      "</td><td class='px-4 py-2'>" +
       items[c].value +
       " " +
       items[c].unit +
@@ -389,23 +458,71 @@ function countall() {
   if (sum === 0) {
     return alert("Put Something In List");
   } else {
-    
+    // Show the report card and set the content
     document.getElementById("reportcard").style.display = "";
     document.getElementById("final").innerHTML =
-      "  <table><tr><th>Date</th><th>Quantity</th></tr>" +
+      "<table class='min-w-full border-collapse'><thead><tr><th class='px-4 py-2 border-b'>Date</th><th class='px-4 py-2 border-b'>Quantity</th></tr></thead><tbody>" +
       summery +
-      "</table>" +
-      "<table><tr><th class='pd'>Total Quantity</th><th>Total Price</th></tr><tr><td>" +
-      sum.toFixed(2) + 
-      " liters</td><td>" +
-      (sum * price).toFixed(2) + 
-      " Rupees</td></tr>";
+      "</tbody></table>" +
+      "<table class='mt-4 min-w-full border-collapse'><tr><th class='pd px-4 py-2 border-b'>Total Quantity</th><th class='px-4 py-2 border-b'>Total Price</th></tr><tr><td class='px-4 py-2 border-b'>" +
+      sum.toFixed(2) +
+      " liters</td><td class='px-4 py-2 border-b'>" +
+      (sum * price).toFixed(2) +
+      " Rupees</td></tr></table>";
   }
 }
-
 
 function closebtn() {
-  if (document.getElementById("reportcard").style.display === "") {
-    document.getElementById("reportcard").style.display = "none";
+  const reportCard = document.getElementById("reportcard");
+
+  // Check if the reportcard is currently visible
+  if (!reportCard.classList.contains("hidden")) {
+    // Hide the reportcard by adding the 'hidden' class
+    reportCard.classList.add("hidden");
   }
 }
+
+function mixfun() {
+  let comp = items.length <= 0;
+
+  // Clear input values if they are not empty
+  if (document.getElementById("add").value !== "") {
+    document.getElementById("add").value = "";
+  }
+
+  if (document.getElementById("price-input").value !== "") {
+    document.getElementById("price-input").value = "";
+  }
+
+  // Hide the clear storage button when the count button is not displayed
+  if (document.getElementById("countbtn").classList.contains("hidden")) {
+    document.getElementById("clearstorage").classList.add("hidden");
+  } else {
+    document.getElementById("clearstorage").classList.remove("hidden");
+  }
+
+  // Show count button and hide other buttons when the month is completed
+  if (items.length < dayslength) {
+    document.getElementById("countbtn").classList.add("hidden");
+    document.getElementById("cbmbtn").classList.remove("hidden");
+    document.getElementById("clearstorage").classList.remove("hidden");
+    document.getElementById("nothing").classList.add("hidden");
+    document.getElementById("price-input").classList.add("hidden");
+  } else {
+    document.getElementById("price-input").classList.remove("hidden");
+    document.getElementById("cbmbtn").classList.add("hidden");
+    document.getElementById("clearstorage").classList.remove("hidden");
+    document.getElementById("countbtn").classList.remove("hidden");
+  }
+
+  // Check if there are no items
+  if (comp) {
+    document.getElementById("cbmbtn").classList.add("hidden");
+    document.getElementById("nothing").classList.remove("hidden");
+    document.getElementById("clearstorage").classList.add("hidden");
+  }
+}
+
+window.onload = function () {
+  listItems();
+};
