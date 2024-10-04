@@ -10,40 +10,22 @@ function setTheme(theme) {
   if (theme === "dark") {
     document.documentElement.style.setProperty("--bg-color", "#2c2f33"); // Dark background
     document.documentElement.style.setProperty("--text-color", "#f5f5f5"); // Light text
+    document.documentElement.style.setProperty("--input-bg-color", "#4e545c"); // Dark input background
+    document.documentElement.style.setProperty("--input-text-color", "#f5f5f5"); // Light input text
     themeToggleLightIcon.classList.remove("hidden");
     themeToggleDarkIcon.classList.add("hidden");
     localStorage.setItem("color-theme", "dark");
   } else {
     document.documentElement.style.setProperty("--bg-color", "#f9f9f9"); // Light background
     document.documentElement.style.setProperty("--text-color", "#00274d"); // Dark text
+    document.documentElement.style.setProperty("--input-bg-color", "#ffffff"); // Light input background
+    document.documentElement.style.setProperty("--input-text-color", "#00274d"); // Dark input text
     themeToggleDarkIcon.classList.remove("hidden");
     themeToggleLightIcon.classList.add("hidden");
     localStorage.setItem("color-theme", "light");
   }
-
-  // Apply the theme after setting it
   applyTheme();
 }
-
-// Set the initial theme
-if (
-  localStorage.getItem("color-theme") === "dark" ||
-  (!("color-theme" in localStorage) &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches)
-) {
-  setTheme("dark");
-} else {
-  setTheme("light");
-}
-
-// Toggle theme when button is clicked
-themeToggleBtn.addEventListener("click", function () {
-  if (localStorage.getItem("color-theme") === "light") {
-    setTheme("dark");
-  } else {
-    setTheme("light");
-  }
-});
 
 // Apply theme to all relevant elements
 function applyTheme() {
@@ -53,33 +35,50 @@ function applyTheme() {
   const textColor = getComputedStyle(document.documentElement).getPropertyValue(
     "--text-color"
   );
+  const inputBgColor = getComputedStyle(
+    document.documentElement
+  ).getPropertyValue("--input-bg-color");
+  const inputTextColor = getComputedStyle(
+    document.documentElement
+  ).getPropertyValue("--input-text-color");
 
-  // Apply background and text color to the body
   document.body.style.backgroundColor = bgColor;
   document.body.style.color = textColor;
 
-  // Apply background and text color to header and footer
+  const inputs = document.querySelectorAll("input, textarea");
+  inputs.forEach((input) => {
+    input.style.backgroundColor = inputBgColor;
+    input.style.color = inputTextColor;
+  });
+
   const header = document.querySelector("header");
   const footer = document.querySelector("footer");
-  
+
   if (header) {
-    header.style.backgroundColor = bgColor === "#f9f9f9" ? "#e0e0e0" : "#23272a"; // Light gray or dark slate gray
+    header.style.backgroundColor =
+      bgColor === "#f9f9f9" ? "#e0e0e0" : "#23272a"; // Light gray or dark slate gray
     header.style.color = textColor;
   }
 
   if (footer) {
-    footer.style.backgroundColor = bgColor === "#f9f9f9" ? "#e0e0e0" : "#23272a"; // Light gray or dark slate gray
+    footer.style.backgroundColor =
+      bgColor === "#f9f9f9" ? "#e0e0e0" : "#23272a"; // Light gray or dark slate gray
     footer.style.color = textColor;
   }
-
-  // Additional elements can be styled here if needed
 }
-
+// Toggle theme when button is clicked
+themeToggleBtn.addEventListener("click", function () {
+  if (localStorage.getItem("color-theme") === "light") {
+    setTheme("dark");
+  } else {
+    setTheme("light");
+  }
+});
 // Call applyTheme on page load and whenever the theme changes
 document.addEventListener("DOMContentLoaded", function () {
+  setTheme();
   applyTheme();
 });
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const mobileMenuButton = document.getElementById("mobile-menu-button");
@@ -89,6 +88,42 @@ document.addEventListener("DOMContentLoaded", function () {
     mobileMenu.classList.toggle("hidden");
   });
 });
+
+function showFlashMessage(message) {
+  const flashMessage = document.createElement("div");
+  flashMessage.textContent = message;
+  flashMessage.classList.add(
+    "fixed",
+    "top-5",
+    "right-2",
+    "transform",
+    "translate-x-[-50%]",
+    "p-2",
+    "bg-blue-600",
+    "text-white",
+    "rounded",
+    "z-50",
+    "opacity-0",
+    "transition-opacity",
+    "duration-500"
+  );
+
+  document.body.appendChild(flashMessage);
+
+  // Show the flash message
+  setTimeout(() => {
+    flashMessage.classList.remove("opacity-0");
+    flashMessage.classList.add("opacity-100");
+  }, 100);
+
+  // Remove after 3 seconds
+  setTimeout(() => {
+    flashMessage.classList.remove("opacity-100");
+    setTimeout(() => {
+      flashMessage.remove();
+    }, 500);
+  }, 3000);
+}
 
 function showSettings() {
   const flashMessage = document.createElement("div");
@@ -235,6 +270,7 @@ function showLastFifteenItems() {
 function clearstorage() {
   if (confirm("Do You Really Want to Clear All List?")) {
     localStorage.clear();
+    showFlashMessage("Successfully cleared.");
     window.location.reload();
   }
 }
@@ -319,10 +355,12 @@ function addItem() {
   }
 
   localStorage.setItem("quantity-list", JSON.stringify(items));
-
   listItems();
 
-  item = "";
+  // Show flash message
+  showFlashMessage("Successfully added.");
+
+  document.getElementById("add").value = ""; // Clear input
 }
 
 function deleteItem(index) {
@@ -330,8 +368,12 @@ function deleteItem(index) {
     items.splice(index, 1);
     localStorage.setItem("quantity-list", JSON.stringify(items));
     listItems();
+
+    // Show flash message
+    showFlashMessage("Successfully deleted.");
   }
 }
+
 let draggedItemIndex = null;
 
 // Function to start dragging
@@ -385,7 +427,7 @@ function listItems() {
       items[i].unit +
       "</span>" +
       "</div>" +
-      "<button class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' onclick='deleteItem(" +
+      "<button class='w-12 h-12 bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white font-bold rounded-lg transition duration-200 flex items-center justify-center' onclick='deleteItem(" +
       i +
       ")'>" +
       svg1 +
@@ -397,19 +439,20 @@ function listItems() {
 
 function countbeforemonth() {
   if (confirm("Do you really want to count before completing the month?")) {
-    // Show the count button and price input
-    document.getElementById("countbtn").classList.remove("hidden");
-    document.getElementById("price-input").classList.remove("hidden");
-
-    // Hide the clear storage and CBM buttons
-    document.getElementById("clearstorage").classList.add("hidden");
-    document.getElementById("cbmbtn").classList.add("hidden");
+    // Hide initial buttons and show count and price input
+    document.getElementById("initial-buttons").classList.add("hidden");
+    document.getElementById("count-and-price").classList.remove("hidden");
   }
 
   // Hide custom date popup if no custom date is selected
   if (document.getElementById("custom-date-input").value === "") {
     document.getElementById("custom-date-popup").classList.add("hidden");
   }
+}
+
+function resetButtonVisibility() {
+  document.getElementById("initial-buttons").classList.remove("hidden");
+  document.getElementById("count-and-price").classList.add("hidden");
 }
 
 function countall() {
@@ -480,6 +523,7 @@ function closebtn() {
     // Hide the reportcard by adding the 'hidden' class
     reportCard.classList.add("hidden");
   }
+  resetButtonVisibility();
 }
 
 function mixfun() {
@@ -525,4 +569,5 @@ function mixfun() {
 
 window.onload = function () {
   listItems();
+  applyTheme();
 };
