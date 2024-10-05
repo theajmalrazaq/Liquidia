@@ -1,4 +1,6 @@
 console.log("first");
+//global variables
+let selectedCurrency = "USD"; //default value for currency
 
 // Theme toggle functionality
 const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
@@ -405,6 +407,16 @@ function dropItem(event, dropIndex) {
   draggedItemIndex = null; // Reset dragged item index
 }
 
+ // currency selector list functionality
+document
+  .getElementById("currency-select--option")
+  .addEventListener("change", function () {
+    selectedCurrency = this.value; //selected option value
+
+  // display selected option value
+    document.getElementById("selected-currency").textContent = selectedCurrency;
+});
+
 // List items with draggable functionality
 function listItems() {
   var list = "";
@@ -511,7 +523,8 @@ function countall() {
       sum.toFixed(2) +
       " liters</td><td class='px-4 py-2 border-b'>" +
       (sum * price).toFixed(2) +
-      " Rupees</td></tr></table>";
+      ` ${selectedCurrency}</td></tr></table>`;
+    document.getElementById("reportcard").classList.remove("hidden");
   }
 }
 

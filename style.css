@@ -68,3 +68,8 @@ footer.dark-mode {
     text-align: center; /* Center text on smaller screens */
   }
 }
+
+/* currency dropdown list text color */
+#currency-select--option{
+  color: #000000;
+}
