@@ -405,6 +405,14 @@ function dropItem(event, dropIndex) {
   draggedItemIndex = null; // Reset dragged item index
 }
 
+ // currency selector list functionality
+ document.getElementById('currency-select--option').addEventListener('change', function() {
+  const selectedCurrency = this.value; //selected option value
+
+  // display selected option value
+  document.getElementById('selected-currency').textContent = selectedCurrency;
+});
+
 // List items with draggable functionality
 function listItems() {
   var list = "";
