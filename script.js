@@ -584,3 +584,74 @@ window.onload = function () {
   listItems();
   applyTheme();
 };
+
+// Add this function to your script.js file
+function addImportExportButtons() {
+  const container = document.querySelector('.grid-cols-1.sm\\:grid-cols-2.md\\:grid-cols-4');
+  if (!container) return;
+
+  const buttonContainer = document.createElement('div');
+  buttonContainer.className = 'col-span-1 sm:col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-4';
+
+  const exportButton = document.createElement('button');
+  exportButton.textContent = 'Export Data';
+  exportButton.onclick = exportData;
+  exportButton.id = 'exportBtn';
+  exportButton.className = 'w-full bg-purple-500 dark:bg-purple-600 hover:bg-purple-600 dark:hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200';
+
+  const importButton = document.createElement('button');
+  importButton.textContent = 'Import Data';
+  importButton.onclick = importData;
+  importButton.id = 'importBtn';
+  importButton.className = 'w-full bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200';
+
+  buttonContainer.appendChild(exportButton);
+  buttonContainer.appendChild(importButton);
+
+  container.appendChild(buttonContainer);
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', addImportExportButtons);
+
+// Add the exportData and importData functions here as well
+function exportData() {
+  const data = JSON.stringify(items);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'liquidia_data.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showFlashMessage("Data exported successfully!");
+}
+
+function importData() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const importedData = JSON.parse(e.target.result);
+        if (Array.isArray(importedData)) {
+          items = importedData;
+          localStorage.setItem("quantity-list", JSON.stringify(items));
+          listItems();
+          showFlashMessage("Data imported successfully!");
+        } else {
+          throw new Error("Invalid data format");
+        }
+      } catch (error) {
+        showFlashMessage("Error importing data. Please check the file format.");
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
