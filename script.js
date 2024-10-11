@@ -407,15 +407,15 @@ function dropItem(event, dropIndex) {
   draggedItemIndex = null; // Reset dragged item index
 }
 
- // currency selector list functionality
+// currency selector list functionality
 document
   .getElementById("currency-select--option")
   .addEventListener("change", function () {
     selectedCurrency = this.value; //selected option value
 
-  // display selected option value
+    // display selected option value
     document.getElementById("selected-currency").textContent = selectedCurrency;
-});
+  });
 
 // List items with draggable functionality
 function listItems() {
@@ -605,7 +605,14 @@ function addImportExportButtons() {
   importButton.id = 'importBtn';
   importButton.className = 'w-full bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200';
 
+  const exportPDFButton = document.createElement('button');
+  exportPDFButton.textContent = 'Export as PDF';
+  exportPDFButton.onclick = exportDataAsPDF;
+  exportPDFButton.id = 'exportDataAsPDF';
+  exportPDFButton.className = 'w-full bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200';
+
   buttonContainer.appendChild(exportButton);
+  // buttonContainer.appendChild(exportPDFButton);
   buttonContainer.appendChild(importButton);
 
   container.appendChild(buttonContainer);
@@ -628,6 +635,21 @@ function exportData() {
   URL.revokeObjectURL(url);
   showFlashMessage("Data exported successfully!");
 }
+
+function exportDataAsPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  // Get the data you want to export
+  const data = JSON.stringify(items, null, 2);  // Pretty-print the JSON
+  // Split the data into lines so it fits in the PDF
+  const lines = doc.splitTextToSize(data, 180);
+  // Add the data to the PDF document
+  doc.text(lines, 10, 10);
+  // Save the PDF
+  doc.save('liquidia_data.pdf');
+  showFlashMessage("Data exported successfully as PDF!");
+}
+
 
 function importData() {
   const input = document.createElement('input');
