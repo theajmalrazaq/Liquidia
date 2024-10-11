@@ -612,7 +612,7 @@ function addImportExportButtons() {
   exportPDFButton.className = 'w-full bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200';
 
   buttonContainer.appendChild(exportButton);
-  buttonContainer.appendChild(exportPDFButton);
+  // buttonContainer.appendChild(exportPDFButton);
   buttonContainer.appendChild(importButton);
 
   container.appendChild(buttonContainer);
