@@ -1,252 +1,423 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liquidia</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Liquidia</title>
+    <!-- Favicon links -->
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="assets/icons/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="assets/icons/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="assets/icons/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="assets/icons/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="assets/icons/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="assets/icons/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="assets/icons/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="assets/icons/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/icons/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="assets/icons/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="assets/icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="assets/icons/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
-  <!-- Favicon links -->
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="60x60" href="assets/icons/apple-icon-60x60.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/icons/apple-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="assets/icons/apple-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-icon-180x180.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-icon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
-  <link rel="manifest" href="manifest.json" />
-  <meta name="msapplication-TileColor" content="#ffffff" />
-  <meta name="msapplication-TileImage" content="assets/icons/ms-icon-144x144.png" />
-  <meta name="theme-color" content="#ffffff" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      @media (max-width: 640px) {
+        .scrollbar-hidden::-webkit-scrollbar {
+          display: none;
+        }
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    @media (max-width: 640px) {
-      .scrollbar-hidden::-webkit-scrollbar {
-        display: none;
+        .scrollbar-hidden {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
       }
+    </style>
+  </head>
 
-      .scrollbar-hidden {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-    }
-  </style>
-</head>
+  <body
+    class="light-mode h-full bg-gray-100 dark:bg-gray-900 transition-colors duration-200 flex flex-col"
+  >
+    <header
+      class="light-mode bg-white dark:bg-gray-800 shadow-md transition-colors duration-200"
+    >
+      <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-3">
+          <!-- Logo -->
+          <div class="flex items-center space-x-4">
+            <div class="text-xl font-semibold text-gray-700 dark:text-gray-300">
+              <img
+                src="assets/icons/logo_aqualator.svg"
+                alt="Liquidia"
+                class="h-8 w-auto"
+              />
+            </div>
+          </div>
 
-<body class="light-mode h-full bg-gray-100 dark:bg-gray-900 transition-colors duration-200 flex flex-col">
-  <header class="light-mode bg-white dark:bg-gray-800 shadow-md transition-colors duration-200">
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-3">
-        <!-- Logo -->
-        <div class="flex items-center space-x-4">
-          <div class="text-xl font-semibold text-gray-700 dark:text-gray-300">
-            <img src="assets/icons/logo_aqualator.svg" alt="Liquidia" class="h-8 w-auto" />
+          <!-- Theme Toggle and Mobile Menu Button -->
+          <div class="flex items-center space-x-4">
+            <!-- Theme Toggle -->
+            <button
+              id="theme-toggle"
+              type="button"
+              class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+            >
+              <svg
+                id="theme-toggle-dark-icon"
+                class="w-5 h-5 hidden"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                ></path>
+              </svg>
+              <svg
+                id="theme-toggle-light-icon"
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button
+              id="mobile-menu-button"
+              class="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 p-2 rounded"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
           </div>
         </div>
 
-        <!-- Theme Toggle and Mobile Menu Button -->
-        <div class="flex items-center space-x-4">
-          <!-- Theme Toggle -->
-          <button id="theme-toggle" type="button"
-            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-            <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-            </svg>
-            <svg id="theme-toggle-light-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                fill-rule="evenodd" clip-rule="evenodd"></path>
-            </svg>
-          </button>
-
-          <!-- Mobile Menu Button -->
-          <button id="mobile-menu-button"
-            class="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 p-2 rounded">
-            <span class="sr-only">Open main menu</span>
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden flex-col items-center space-y-4 mt-4"
+        >
+          <!-- Add mobile menu items here -->
         </div>
-      </div>
+      </nav>
+    </header>
 
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden flex-col items-center space-y-4 mt-4">
-        <!-- Add mobile menu items here -->
-      </div>
-    </nav>
-  </header>
-
-  <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div class="mb-6 space-y-4">
-      <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3">
-        <p class="icon-txt cursor-pointer font-bold font-lemonmilk" onclick="showcustomdatepopup()" id="clear">
-          📅 Custom Date
-        </p>
-        <input type="number" id="add" placeholder="Add quantity"
-          class="w-full sm:w-auto flex-grow px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        <select id="unit"
-          class="w-full sm:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <option value="ml">ml</option>
-          <option value="l">L</option>
-          <option value="oz">oz</option>
-          <option value="gal">gal</option>
-        </select>
-        <button onclick="addItem()"
-          class="w-full sm:w-auto bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
-          Add
-        </button>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-      <div id="initial-buttons" class="col-span-1 sm:col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <button onclick="countbeforemonth()" id="cbmbtn"
-          class="w-full bg-yellow-500 dark:bg-yellow-600 hover:bg-yellow-600 dark:hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
-          Count Now!
-        </button>
-        <button onclick="clearstorage()" id="clearstorage"
-          class="w-full bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
-          Clear
-        </button>
-      </div>
-      <div id="count-and-price"
-        class="col-span-1 sm:col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-4 hidden">
-        <button onclick="countall()" id="countbtn"
-          class="w-full bg-green-500 dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
-          Count
-        </button>
-        <div class="flex items-center">
-          <input type="number" id="price-input" placeholder="Price per Ltr." min="1"
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <select id="currency-select--option" class="ml-2">
-            <option value="USD">USD - United States Dollar</option>
-            <option value="EUR">EUR - Euro</option>
-            <option value="GBP">GBP - British Pound Sterling</option>
-            <option value="JPY">JPY - Japanese Yen</option>
-            <option value="CAD">CAD   - Canadian Dollar</option>
-            <option value="AUD">AUD - Australian Dollar</option>
-            <option value="INR">INR - Indian Rupee</option>
-            <option value="CNY">CNY - Chinese Yuan</option>
-            <option value="RUB">RUB - Russian Ruble</option>
-            <option value="BRL">BRL - Brazilian Real</option>
-            <option value="ZAR">ZAR - South African Rand</option>
-            <option value="MXN">MXN - Mexican Peso</option>
-            <option value="TRY">TRY - Turkish Lira</option>
-            <option value="KRW">KRW - South Korean Won</option>
-            <option value="IDR">IDR - Indonesian Rupiah</option>
-            <option value="PHP">PHP   - Philippine Peso</option>
-            <option value="THB">THB - Thai Baht</option>
-            <option value="MYR">MYR - Malaysian Ringgit</option>
-            <option value="SGD">SGD - Singapore Dollar</option>
-            <option value="NZD">NZD - New Zealand Dollar</option>
-            <option value="HKD">HKD - Hong Kong Dollar</option>
-            <option value="SEK">SEK - Swedish Krona</option>
-            <option value="NOK">NOK - Norwegian Krone</option>
-            <option value="DKK">DKK - Danish Krone</option>
-            <option value="CHF">CHF - Swiss Franc</option>
-            <option value="ILS">ILS - Israeli Shekel</option>
-            <option value="PLN">PLN - Polish Zloty</option>
-            <option value="CZK">CZK - Czech Koruna</option>
-            <option value="HUF">HUF - Hungarian Forint</option>
-            <option value="RON">RON - Romanian Leu</option>
-            <option value="BGN">BGN - Bulgarian Lev</option>
-            <option value="TRY">TRY - Turkish Lira</option>
-            <option value="KRW">KRW   - South Korean Won</option>
-            <option value="IDR">IDR - Indonesian Rupiah</option>
-            <option value="PHP">PHP   - Philippine Peso</option>
-            <option value="THB">THB - Thai Baht</option>
-            <option value="MYR">MYR - Malaysian Ringgit</option>
-            <option value="SGD">SGD - Singapore Dollar</option>
-            <option value="NZD">NZD - New Zealand Dollar</option>
-            <option value="HKD">HKD - Hong Kong Dollar</option>
-            <option value="SEK">SEK - Swedish Krona</option>
-            <option value="NOK">NOK - Norwegian Krone</option>
-            <option value="DKK">DKK - Danish Krone</option>
-            <option value="CHF">CHF - Swiss Franc</option>
-            <option value="ILS">ILS - Israeli Shekel</option>
-            <option value="PLN">PLN - Polish Zloty</option>
-            <option value="CZK">CZK - Czech Koruna</option>
-            <option value="HUF">HUF - Hungarian Forint</option>
-            <option value="RON">RON - Romanian Leu</option>
-            <option value="BGN">BGN - Bulgarian Lev</option>
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="mb-6 space-y-4">
+        <div
+          class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3"
+        >
+          <p
+            class="icon-txt cursor-pointer font-bold font-lemonmilk"
+            onclick="showcustomdatepopup()"
+            id="clear"
+          >
+            📅 Custom Date
+          </p>
+          <input
+            type="number"
+            id="add"
+            placeholder="Add quantity"
+            class="w-full sm:w-auto flex-grow px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <select
+            id="unit"
+            class="w-full sm:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="ml">ml</option>
+            <option value="l">L</option>
+            <option value="oz">oz</option>
+            <option value="gal">gal</option>
           </select>
-          <span id="selected-currency" aria-hidden="true">USD</span>
+          <button
+            onclick="addItem()"
+            class="w-full sm:w-auto bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div
+          id="initial-buttons"
+          class="col-span-1 sm:col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-4"
+        >
+          <button
+            onclick="countbeforemonth()"
+            id="cbmbtn"
+            class="w-full bg-yellow-500 dark:bg-yellow-600 hover:bg-yellow-600 dark:hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+          >
+            Count Now!
+          </button>
+          <button
+            onclick="clearstorage()"
+            id="clearstorage"
+            class="w-full bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+          >
+            Clear
+          </button>
+        </div>
+        <div
+          id="count-and-price"
+          class="col-span-1 sm:col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-4 hidden"
+        >
+          <button
+            onclick="countall()"
+            id="countbtn"
+            class="w-full bg-green-500 dark:bg-green-600 hover:bg-green-600 dark:hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+          >
+            Count
+          </button>
+          <div class="flex items-center">
+            <input
+              type="number"
+              id="price-input"
+              placeholder="Price per Ltr."
+              min="1"
+              class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <select id="currency-select--option" class="ml-2">
+              <option value="USD">USD - United States Dollar</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - British Pound Sterling</option>
+              <option value="JPY">JPY - Japanese Yen</option>
+              <option value="CAD">CAD   - Canadian Dollar</option>
+              <option value="AUD">AUD - Australian Dollar</option>
+              <option value="INR">INR - Indian Rupee</option>
+              <option value="CNY">CNY - Chinese Yuan</option>
+              <option value="RUB">RUB - Russian Ruble</option>
+              <option value="BRL">BRL - Brazilian Real</option>
+              <option value="ZAR">ZAR - South African Rand</option>
+              <option value="MXN">MXN - Mexican Peso</option>
+              <option value="TRY">TRY - Turkish Lira</option>
+              <option value="KRW">KRW - South Korean Won</option>
+              <option value="IDR">IDR - Indonesian Rupiah</option>
+              <option value="PHP">PHP   - Philippine Peso</option>
+              <option value="THB">THB - Thai Baht</option>
+              <option value="MYR">MYR - Malaysian Ringgit</option>
+              <option value="SGD">SGD - Singapore Dollar</option>
+              <option value="NZD">NZD - New Zealand Dollar</option>
+              <option value="HKD">HKD - Hong Kong Dollar</option>
+              <option value="SEK">SEK - Swedish Krona</option>
+              <option value="NOK">NOK - Norwegian Krone</option>
+              <option value="DKK">DKK - Danish Krone</option>
+              <option value="CHF">CHF - Swiss Franc</option>
+              <option value="ILS">ILS - Israeli Shekel</option>
+              <option value="PLN">PLN - Polish Zloty</option>
+              <option value="CZK">CZK - Czech Koruna</option>
+              <option value="HUF">HUF - Hungarian Forint</option>
+              <option value="RON">RON - Romanian Leu</option>
+              <option value="BGN">BGN - Bulgarian Lev</option>
+              <option value="TRY">TRY - Turkish Lira</option>
+              <option value="KRW">KRW   - South Korean Won</option>
+              <option value="IDR">IDR - Indonesian Rupiah</option>
+              <option value="PHP">PHP   - Philippine Peso</option>
+              <option value="THB">THB - Thai Baht</option>
+              <option value="MYR">MYR - Malaysian Ringgit</option>
+              <option value="SGD">SGD - Singapore Dollar</option>
+              <option value="NZD">NZD - New Zealand Dollar</option>
+              <option value="HKD">HKD - Hong Kong Dollar</option>
+              <option value="SEK">SEK - Swedish Krona</option>
+              <option value="NOK">NOK - Norwegian Krone</option>
+              <option value="DKK">DKK - Danish Krone</option>
+              <option value="CHF">CHF - Swiss Franc</option>
+              <option value="ILS">ILS - Israeli Shekel</option>
+              <option value="PLN">PLN - Polish Zloty</option>
+              <option value="CZK">CZK - Czech Koruna</option>
+              <option value="HUF">HUF - Hungarian Forint</option>
+              <option value="RON">RON - Romanian Leu</option>
+              <option value="BGN">BGN - Bulgarian Lev</option>
+            </select>
+            <span id="selected-currency" aria-hidden="true">USD</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-lg sm:text-xl font-semibold mb-4">Recently added</h3>
+
+      <div
+        id="list-items"
+        class="scrollbar-hidden space-y-4 max-h-72 overflow-y-auto scrollbar-hidden pb-4"
+      ></div>
+
+      <div
+        id="nothing"
+        class="text-center text-xl sm:text-2xl font-bold text-blue-500 dark:text-blue-400 mt-8 hidden"
+      >
+        !<br /><span class="text-sm text-gray-500 dark:text-gray-400"
+          >Nothing Here Add Something</span
+        >
+      </div>
+
+      <div
+        id="custom-date-popup"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50"
+      >
+        <div
+          class="bg-white dark:bg-gray-700 p-6 rounded-lg w-full max-w-sm mx-4"
+        >
+          <input
+            type="date"
+            id="custom-date-input"
+            class="w-full mb-4 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <div class="flex justify-end space-x-4">
+            <button
+              onclick="cancelbtn()"
+              class="bg-gray-500 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            >
+              Cancel
+            </button>
+            <button
+              onclick="donebtn()"
+              class="bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div
+      id="reportcard"
+      style="display: none"
+      class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+    >
+      <div
+        class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-11/12 max-w-lg"
+      >
+        <div
+          class="relative z-10 bg-white dark:bg-gray-800 w-full p-5 rounded-lg"
+        >
+          <div class="h-60 sm:h-80 overflow-y-scroll scrollbar-hidden">
+            <span
+              id="final"
+              class="block text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
+            ></span>
+          </div>
+          <div class="mt-4 flex justify-center">
+            <button
+              onclick="closebtn(), mixfun()"
+              id="close"
+              class="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 mr-4"
+            >
+              Close
+            </button>
+            <button
+              onclick="exportDataAsPDF()"
+              id="exportPDFBtn"
+              class="px-4 py-2 bg-red-500 dark:bg-red-600 text-white rounded hover:bg-red-600 dark:hover:bg-red-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"
+            >
+              Export as PDF
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
-    <h3 class="text-lg sm:text-xl font-semibold mb-4">Recently added</h3>
-
-    <div id="list-items" class="scrollbar-hidden space-y-4 max-h-72 overflow-y-auto scrollbar-hidden pb-4"></div>
-
-    <div id="nothing" class="text-center text-xl sm:text-2xl font-bold text-blue-500 dark:text-blue-400 mt-8 hidden">
-      !<br /><span class="text-sm text-gray-500 dark:text-gray-400">Nothing Here Add Something</span>
-    </div>
-
-    <div id="custom-date-popup"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-lg w-full max-w-sm mx-4">
-        <input type="date" id="custom-date-input"
-          class="w-full mb-4 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        <div class="flex justify-end space-x-4">
-          <button onclick="cancelbtn()"
-            class="bg-gray-500 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
-            Cancel
-          </button>
-          <button onclick="donebtn()"
-            class="bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
-            Done
-          </button>
-        </div>
+    <footer
+      class="light-mode bg-white dark:bg-gray-800 shadow-md py-4 transition-colors duration-200 mt-auto"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          &copy; 2024 Liquidia. All rights reserved.
+        </p>
       </div>
-    </div>
-  </main>
+    </footer>
 
-  <div id="reportcard" style="display: none"
-    class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-11/12 max-w-lg">
-      <div class="relative z-10 bg-white dark:bg-gray-800 w-full p-5 rounded-lg">
-        <div class="h-60 sm:h-80 overflow-y-scroll scrollbar-hidden">
-          <span id="final" class="block text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"></span>
-        </div>
-        <div class="mt-4 flex justify-center">
-          <button onclick="closebtn(), mixfun()" id="close" <button onclick="closebtn(), mixfun()" id="close"
-            class="px-4 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded hover:bg-blue-600 dark:hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 mr-4">
-            Close
-          </button>
-          <button onclick="exportDataAsPDF()" id="exportPDFBtn"
-            class="px-4 py-2 bg-red-500 dark:bg-red-600 text-white rounded hover:bg-red-600 dark:hover:bg-red-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50">
-            Export as PDF
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="light-mode bg-white dark:bg-gray-800 shadow-md py-4 transition-colors duration-200 mt-auto">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-sm text-gray-500 dark:text-gray-400">
-        &copy; 2024 Liquidia. All rights reserved.
-      </p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-</body>
-
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  </body>
 </html>
