@@ -86,7 +86,7 @@ footer.dark-mode {
   flex-grow: 1; /* This ensures the content takes up available space */
 }
 
-footer {
+.pdf-footer {
   text-align: center;
   padding: 10px 0;
   background-color: #f8f9fa;
