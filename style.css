@@ -70,6 +70,25 @@ footer.dark-mode {
 }
 
 /* currency dropdown list text color */
-#currency-select--option{
+#currency-select--option {
   color: #000000;
+}
+
+/* Ensure the pdf-content takes the full height of the page and positions footer at the bottom */
+.pdf-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height for the page */
+  justify-content: space-between;
+}
+
+.flex-grow {
+  flex-grow: 1; /* This ensures the content takes up available space */
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #f8f9fa;
+  color: #6c757d;
 }
