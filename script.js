@@ -637,17 +637,20 @@ function exportData() {
 }
 
 function exportDataAsPDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  // Get the data you want to export
-  const data = JSON.stringify(items, null, 2);  // Pretty-print the JSON
-  // Split the data into lines so it fits in the PDF
-  const lines = doc.splitTextToSize(data, 180);
-  // Add the data to the PDF document
-  doc.text(lines, 10, 10);
-  // Save the PDF
-  doc.save('liquidia_data.pdf');
-  showFlashMessage("Data exported successfully as PDF!");
+  const reportContent = document.getElementById("final").innerHTML;
+  const opt = {
+    margin:       1,
+    filename:     'report.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 2 },
+    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+
+  // Choose the element to convert to PDF
+  html2pdf().from(reportContent).set(opt).save();
+
+  // Show flash message
+  showFlashMessage("Report exported as PDF.", "success");
 }
 
 
