@@ -667,6 +667,8 @@ function exportDataAsPDF() {
       // Hide it again after PDF generation
       pdfContent.classList.add("hidden");
     });
+
+  showFlashMessage("Data exported as PDF successfully!");
 }
 
 function importData() {
