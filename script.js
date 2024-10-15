@@ -587,29 +587,35 @@ window.onload = function () {
 
 // Add this function to your script.js file
 function addImportExportButtons() {
-  const container = document.querySelector('.grid-cols-1.sm\\:grid-cols-2.md\\:grid-cols-4');
+  const container = document.querySelector(
+    ".grid-cols-1.sm\\:grid-cols-2.md\\:grid-cols-4"
+  );
   if (!container) return;
 
-  const buttonContainer = document.createElement('div');
-  buttonContainer.className = 'col-span-1 sm:col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-4';
+  const buttonContainer = document.createElement("div");
+  buttonContainer.className =
+    "col-span-1 sm:col-span-2 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-4";
 
-  const exportButton = document.createElement('button');
-  exportButton.textContent = 'Export Data';
+  const exportButton = document.createElement("button");
+  exportButton.textContent = "Export Data";
   exportButton.onclick = exportData;
-  exportButton.id = 'exportBtn';
-  exportButton.className = 'w-full bg-purple-500 dark:bg-purple-600 hover:bg-purple-600 dark:hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200';
+  exportButton.id = "exportBtn";
+  exportButton.className =
+    "w-full bg-purple-500 dark:bg-purple-600 hover:bg-purple-600 dark:hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200";
 
-  const importButton = document.createElement('button');
-  importButton.textContent = 'Import Data';
+  const importButton = document.createElement("button");
+  importButton.textContent = "Import Data";
   importButton.onclick = importData;
-  importButton.id = 'importBtn';
-  importButton.className = 'w-full bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200';
+  importButton.id = "importBtn";
+  importButton.className =
+    "w-full bg-indigo-500 dark:bg-indigo-600 hover:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200";
 
-  const exportPDFButton = document.createElement('button');
-  exportPDFButton.textContent = 'Export as PDF';
+  const exportPDFButton = document.createElement("button");
+  exportPDFButton.textContent = "Export as PDF";
   exportPDFButton.onclick = exportDataAsPDF;
-  exportPDFButton.id = 'exportDataAsPDF';
-  exportPDFButton.className = 'w-full bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200';
+  exportPDFButton.id = "exportDataAsPDF";
+  exportPDFButton.className =
+    "w-full bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200";
 
   buttonContainer.appendChild(exportButton);
   // buttonContainer.appendChild(exportPDFButton);
@@ -619,16 +625,16 @@ function addImportExportButtons() {
 }
 
 // Call this function when the page loads
-document.addEventListener('DOMContentLoaded', addImportExportButtons);
+document.addEventListener("DOMContentLoaded", addImportExportButtons);
 
 // Add the exportData and importData functions here as well
 function exportData() {
   const data = JSON.stringify(items);
-  const blob = new Blob([data], { type: 'application/json' });
+  const blob = new Blob([data], { type: "application/json" });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
+  const a = document.createElement("a");
   a.href = url;
-  a.download = 'liquidia_data.json';
+  a.download = "liquidia_data.json";
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -637,24 +643,38 @@ function exportData() {
 }
 
 function exportDataAsPDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  // Get the data you want to export
-  const data = JSON.stringify(items, null, 2);  // Pretty-print the JSON
-  // Split the data into lines so it fits in the PDF
-  const lines = doc.splitTextToSize(data, 180);
-  // Add the data to the PDF document
-  doc.text(lines, 10, 10);
-  // Save the PDF
-  doc.save('liquidia_data.pdf');
-  showFlashMessage("Data exported successfully as PDF!");
+  // Clone the content of the final div and insert it into the pdf-content
+  const finalContent = document.getElementById("final").innerHTML;
+  document.getElementById("final-content").innerHTML = finalContent;
+
+  // Select the hidden pdf-content div
+  const pdfContent = document.getElementById("pdf-content");
+  pdfContent.classList.remove("hidden"); // Temporarily show it for PDF generation
+
+  const opt = {
+    margin: [0.5, 0.5, 0.5, 0.5], // [top, left, bottom, right]
+    filename: "report.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+  };
+
+  html2pdf()
+    .from(pdfContent)
+    .set(opt)
+    .save()
+    .then(() => {
+      // Hide it again after PDF generation
+      pdfContent.classList.add("hidden");
+    });
+
+  showFlashMessage("Data exported as PDF successfully!");
 }
 
-
 function importData() {
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = '.json';
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
   input.onchange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
