@@ -129,6 +129,7 @@
               id="theme-toggle"
               type="button"
               class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+              title="Toggle Theme"
             >
               <svg
                 id="theme-toggle-dark-icon"
@@ -211,6 +212,7 @@
           />
           <select
             id="unit"
+            title="Unit"
             class="w-full sm:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="ml">ml</option>
@@ -266,7 +268,7 @@
               min="1"
               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <select id="currency-select--option" class="ml-2">
+            <select id="currency-select--option" class="ml-2" title="currency">
               <option value="USD">USD - United States Dollar</option>
               <option value="EUR">EUR - Euro</option>
               <option value="GBP">GBP - British Pound Sterling</option>
@@ -346,10 +348,13 @@
         <div
           class="bg-white dark:bg-gray-700 p-6 rounded-lg w-full max-w-sm mx-4"
         >
+          <label for="custom-date-input" class="sr-only">Custom Date</label>
           <input
             type="date"
             id="custom-date-input"
             class="w-full mb-4 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            title="Select a custom date"
+            placeholder="Select a custom date"
           />
           <div class="flex justify-end space-x-4">
             <button
