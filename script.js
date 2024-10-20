@@ -1,4 +1,3 @@
-console.log("first");
 //global variables
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
