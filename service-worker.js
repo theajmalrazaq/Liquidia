@@ -2,10 +2,9 @@ const CACHE_NAME = 'app-cache-v1';
 const urlsToCache = [
   '/', // Cache the root of the app
   'index.html',
-  'styles.css', // Example CSS
+  'style.css', // Example CSS
   'script.js', // Your main JavaScript file
   'offline.html', // Fallback offline page
-  '/icons/icon-192x192.png', // App icons
 ];
 
 // Install event: caching resources
