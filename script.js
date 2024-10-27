@@ -496,24 +496,33 @@ function countall() {
     oz: 0.0295735, // 1 oz = 0.0295735 liters
     gal: 3.78541, // 1 gallon = 3.78541 liters
   };
-
+  
+  let from="";
+  let to="";
   // Loop through items and calculate total sum
   for (let c = 0; c < items.length; c++) {
+    if(c===0){
+      from = items[c].date;
+    }
+    if(c===items.length-1){
+      to = items[c].date;
+    }
     let unit = items[c].unit;
     let value = parseFloat(items[c].value);
     let convertedValue = value * conversionFactors[unit];
-
+    console.log(typeof convertedValue);
     sum += convertedValue;
 
     summery +=
-      "<tr class='border-b'><td class='px-4 py-2'>" +
-      items[c].date +
-      "</td><td class='px-4 py-2'>" +
-      items[c].value +
-      " " +
-      items[c].unit +
-      "</td></tr>";
+    `<tr class='border-b'>
+    <td class='px-4 py-2 text-center'>${items[c].date}</td>
+    <td class='px-4 py-2 text-center'>${items[c].value} ${items[c].unit}</td>
+    <td class='px-4 py-2 text-center'>${convertedValue}</td>
+  </tr>`
   }
+
+  console.log(`${from.substring(0,5)} - ${to.substring(0,5)}`);
+  
 
   // Check if price is entered
   if (price === "") {
@@ -527,12 +536,14 @@ function countall() {
     // Show the report card and set the content
     document.getElementById("reportcard").style.display = "";
     document.getElementById("final").innerHTML =
-      "<table class='min-w-full border-collapse'><thead><tr><th class='px-4 py-2 border-b'>Date</th><th class='px-4 py-2 border-b'>Quantity</th></tr></thead><tbody>" +
+      "<table class='min-w-full border-collapse'><thead><tr><th class='px-4 py-2 border-b'>Date</th><th class='px-4 py-2 border-b'>Quantity</th><th class='px-4 py-2 border-b'>Price</th></tr></thead><tbody>" +
       summery +
       "</tbody></table>" +
-      "<table class='mt-4 min-w-full border-collapse'><tr><th class='pd px-4 py-2 border-b'>Total Quantity</th><th class='px-4 py-2 border-b'>Total Price</th></tr><tr><td class='px-4 py-2 border-b'>" +
+      "<table class='mt-4 min-w-full border-collapse'><tr><th class='pd px-4 py-2 border-b'>From-To</th><th class='pd px-4 py-2 border-b'>Total Quantity</th><th class='px-4 py-2 border-b'>Total Price</th></tr><tr><td class='px-4 py-2 border-b text-center'>" + 
+      from.substring(0,5) + "-" + to.substring(0,5)+
+      "</td><td class='px-4 py-2 border-b text-center'>"+
       sum.toFixed(2) +
-      " liters</td><td class='px-4 py-2 border-b'>" +
+      " liters</td><td class='px-4 py-2 border-b text-center'>" +
       (sum * price).toFixed(2) +
       ` ${selectedCurrency}</td></tr></table>`;
     document.getElementById("reportcard").classList.remove("hidden");
