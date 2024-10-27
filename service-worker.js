@@ -18,8 +18,8 @@ const urlsToCache = [
   'assets/icons/ms-icon-144x144.png',
   'assets/icons/ms-icon-150x150.png',
   'assets/icons/ms-icon-310x310.png',
-  'manifest.json',
   'assets/icons/logo_aqualator.svg',
+  'manifest.json',
 ];
 
 // Install event: caching resources
