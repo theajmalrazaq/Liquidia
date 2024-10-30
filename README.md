@@ -1,13 +1,6 @@
   <img src="https://i.ibb.co/85XNCzk/logo-blue-png.png" height="100px" width="auto"/>
 
 
-# Hacktoberfest TODOs
-#### 1. Currency selection
-#### 2. Customizable units
-#### 3. Export invoices (PDF/PNG)
-#### 4. Dark mode (Assigned)
-#### 5. Import/export data (JSON)
-#### 6. Offline access with service workers
 
 
 # About
